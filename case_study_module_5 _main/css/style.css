@@ -777,6 +777,9 @@ ul.link_menu li a {
 ul.link_menu li a:hover {
      color: #ff0909;
 }
+.link_menu li {
+     padding-bottom: 20px;
+}
 
 .bottom_form {
      display: flex;
