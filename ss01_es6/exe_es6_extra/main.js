@@ -52,17 +52,10 @@ console.log(student);
 //          Nếu đối tượng truyền vào không có thuộc tính firstName 
 //          thì firstName có giá trị mặc định là ""Quân"", tương tự với degree là "NA"											
 
-let getInfoStudent = student =>{
-    let {firstName,degree} = student;
-    if (firstName === undefined){
-        firstName = "Quân";
-    }
-    if (degree === undefined){
-        degree = "N/A";
-    }
+let getInfoStudent = ({firstName="Quân",degree="N/A"}) =>{
     return "First name: " + firstName + "\n" + "Degree: " + degree;
 }
 const student1 = {
     age: 30
 }
-console.log(getInfoStudent(student1));
+console.log(getInfoStudent(student));
