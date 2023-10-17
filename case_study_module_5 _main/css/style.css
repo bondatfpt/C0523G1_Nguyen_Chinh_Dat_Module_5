@@ -150,10 +150,10 @@ img {
      padding: 0;
 }
 
-.form-control:focus {
+/* .form-control:focus {
      border-color: #ffffff !important;
      box-shadow: 0 0 0 .2rem rgba(255, 255, 255, .25);
-}
+} */
 
 .navbar-form input {
      border: none !important;
@@ -919,6 +919,29 @@ table th{
 table td{
      font-size: 16px;
 }
+
+.highlight-link{
+     color: white;
+     animation: blink 1s infinite;
+   }
+   
+   @keyframes blink {
+     0% {
+       color: yellow;
+     }
+     25%{
+          color: blue;
+     }
+     50% {
+       color: green;
+     }
+     75%{
+          color: violet;
+     }
+     100% {
+       color: red;
+     }
+   }
 
 
 
