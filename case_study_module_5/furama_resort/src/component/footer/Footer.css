@@ -22,11 +22,8 @@ ul.conta li {
     padding-bottom: 20px;
     font-size: 16px;
 }
-
-ul.conta li i {
-    padding-right: 15px;
-    text-align: center;
-    font-size: 20px;
+ul{
+    padding-left: 0;
 }
 
 ul.conta li a {
