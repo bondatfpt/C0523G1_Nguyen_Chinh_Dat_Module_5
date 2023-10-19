@@ -1,0 +1,14 @@
+.back_re {
+    background-color: #0f1521;
+}
+.back_re .title {
+    text-align: center;
+}
+.back_re .title h2 {
+color:#fff;
+font-size: 40px;
+padding: 20px 0;
+font-weight: 600;
+text-transform: uppercase;
+line-height: 35px;
+}
