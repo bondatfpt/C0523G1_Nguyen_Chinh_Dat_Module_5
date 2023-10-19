@@ -8,6 +8,7 @@ import CreateRoom from './component/facilities/CreateRoom';
 import UpdateVilla from './component/facilities/UpdateVilla';
 import UpdateHouse from './component/facilities/UpdateHouse';
 import UpdateRoom from './component/facilities/UpdateRoom';
+import Contract from "./component/contract/Contract";
 
 function App() {
   return (
