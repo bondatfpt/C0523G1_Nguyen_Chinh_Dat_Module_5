@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Footer() {
   return (
@@ -21,9 +22,9 @@ export default function Footer() {
                   <div className="col-md-4">
                      <h3>Menu Link</h3>
                      <ul className="link_menu">
-                        <li className="active"><a href="facilities.html">Facilities</a></li>
-                        <li><a href="customers.html"> Customers</a></li>
-                        <li><a href="contract.html">Contracts</a></li>                 
+                        <li><Link to="/">Facilities</Link></li>
+                        <li><Link to="/customers"> Customers</Link></li>
+                        <li><Link to="/contracts">Contracts</Link></li>                 
                      </ul>
                   </div>
                   <div className="col-md-4">

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -14,7 +15,7 @@ export default function Header() {
                      <div className="full">
                         <div className="center-desk">
                            <div className="logo">
-                              <a href="facilities.html"><img src="/images/logo.png" alt="#"/></a>
+                              <Link to="/"><img src="/images/logo.png" alt="#"/></Link>
                            </div>
                         </div>
                      </div>
@@ -26,14 +27,14 @@ export default function Header() {
                         </button>
                         <div className="collapse navbar-collapse" id="navbarsExample04">
                            <ul className="navbar-nav mr-auto">
-                              <li className="nav-item active">
-                                 <a className="nav-link" href="/facilities.html">Facilities</a>
+                              <li className="nav-item">
+                                 <Link className="nav-link" to="/">Facilities</Link>
                               </li>
                               <li className="nav-item">
-                                 <a className="nav-link" href="customers.html">Customers</a>
+                                 <Link className="nav-link" to="/customers">Customers</Link>
                               </li>
                               <li className="nav-item">
-                                 <a className="nav-link" href="contract.html">Contracts</a>
+                                 <Link className="nav-link" to="/contracts">Contracts</Link>
                               </li>
                            </ul>
                         </div>

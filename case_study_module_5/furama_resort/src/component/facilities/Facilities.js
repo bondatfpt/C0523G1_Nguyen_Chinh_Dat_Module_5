@@ -1,7 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Facilities.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
 
 export default function () {
   return (
@@ -14,9 +13,9 @@ export default function () {
                 <div className="titlepage">
                   <h2>Our Villa</h2>
                   <h3>
-                    <a href="create-villa.html" className="highlight-link">
+                    <Link to="/villa/new" className="highlight-link">
                       Add a new villa
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
@@ -190,9 +189,9 @@ export default function () {
                 <div className="titlepage">
                   <h2>Our House</h2>
                   <h3>
-                    <a className="highlight-link" href="create-house.html">
+                    <Link className="highlight-link" to="/house/new">
                       Add a new house
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
@@ -366,9 +365,9 @@ export default function () {
                 <div className="titlepage">
                   <h2>Our Room</h2>
                   <h3>
-                    <a className="highlight-link" href="create-room.html">
+                    <Link className="highlight-link" to="/room/new">
                       Add a new room
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
@@ -557,13 +556,13 @@ export default function () {
                 </div>
                 <div className="modal-body">...</div>
                 <div className="modal-footer">
-                  <a
-                    href="update-villa.html"
+                  <Link
+                    to="/villa/update"
                     type="button"
                     className="btn btn-primary"
                   >
                     Edit
-                  </a>
+                  </Link>
                   <button type="button" className="btn btn-danger">
                     Delete
                   </button>
