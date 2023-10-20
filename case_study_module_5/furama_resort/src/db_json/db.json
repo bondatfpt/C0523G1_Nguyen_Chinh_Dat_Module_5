@@ -1,0 +1,90 @@
+{
+  "roomStandards": [
+    {
+      "id": 1,
+      "name": "Normal"
+    },
+    {
+      "id": 2,
+      "name": "Medium"
+    },
+    {
+      "id": 3,
+      "name": "Vip"
+    }
+  ],
+  "villas": [
+    {
+      "id": 1,
+      "pathImg": "/images/villa1.jpg",
+      "villaName": "Santa Villa ",
+      "usableArea": 5000,
+      "rentalCost": 5000,
+      "numberPeople": 50,
+      "rentalType": ["Day", "Month", "Year"],
+      "roomStandard": 1,
+      "poolArea": 100,
+      "numberFloor": 5
+    },
+    {
+      "id": 2,
+      "pathImg": "/images/villa2.jpg",
+      "villaName": "Tấm Villa",
+      "usableArea": 5000,
+      "rentalCost": 5000,
+      "numberPeople": 50,
+      "rentalType": ["Day", "Month", "Year"],
+      "roomStandard": 1,
+      "poolArea": 100,
+      "numberFloor": 5
+    },
+    {
+      "id": 3,
+      "pathImg": "/images/villa3.jpg",
+      "villaName": "Soleil Villa",
+      "usableArea": 5000,
+      "rentalCost": 5000,
+      "numberPeople": 50,
+      "rentalType": ["Day", "Month", "Year"],
+      "roomStandard": 2,
+      "poolArea": 100,
+      "numberFloor": 5
+    },
+    {
+      "id": 4,
+      "pathImg": "/images/villa4.jpg",
+      "villaName": "Venity Villa",
+      "usableArea": 5000,
+      "rentalCost": 5000,
+      "numberPeople": 50,
+      "rentalType": ["Day", "Month", "Year"],
+      "roomStandard": 2,
+      "poolArea": 100,
+      "numberFloor": 5
+    },
+    {
+      "id": 5,
+      "pathImg": "/images/villa5.jpg",
+      "villaName": "Luxury Villa",
+      "usableArea": 5000,
+      "rentalCost": 5000,
+      "numberPeople": 50,
+      "rentalType": ["Day", "Month", "Year"],
+      "roomStandard": 3,
+      "poolArea": 100,
+      "numberFloor": 5
+    },
+    {
+      "id": 6,
+      "pathImg": "images/villa6.jpg",
+      "villaName": " Plumeria Villa",
+      "usableArea": 5000,
+      "rentalCost": 5000,
+      "numberPeople": 50,
+      "rentalType": ["Day", "Month", "Year"],
+      "roomStandard": 3,
+      "poolArea": 100,
+      "numberFloor": 5
+    }
+  ]
+}
