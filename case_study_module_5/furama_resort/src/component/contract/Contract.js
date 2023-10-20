@@ -4,6 +4,17 @@ import "./Contract.css";
 export default function Contract() {
   return (
     <div>
+      <div className="back_re">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="title">
+                <h2>Contract</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
         <div className="our_room">
   <div style={{ marginTop: "-45px" }}>
     <h3>

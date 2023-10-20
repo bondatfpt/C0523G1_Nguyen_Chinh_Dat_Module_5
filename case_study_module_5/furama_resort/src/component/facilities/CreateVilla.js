@@ -3,6 +3,17 @@ import React from 'react'
 export default function CreateVilla() {
   return (
     <div>
+      <div className="back_re">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="title">
+                <h2>Create Villa</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
         <div className="our_room">
   <section>
     <div className="container py-5 h-100">

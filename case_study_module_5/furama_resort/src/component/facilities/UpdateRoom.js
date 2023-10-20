@@ -3,6 +3,17 @@ import React from 'react'
 export default function UpdateRoom() {
   return (
     <div>
+      <div className="back_re">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="title">
+                <h2>Update Room</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
         <div className="our_room">
   <section
     style={{

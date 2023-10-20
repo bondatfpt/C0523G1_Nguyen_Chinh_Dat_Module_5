@@ -39,7 +39,7 @@
 }
 
 .our_room .room .bed_room {
-    padding: 33px 30px;
+    padding: 33px 30px 30px 30px;
 }
 
 .our_room .room .bed_room h3 {
@@ -55,3 +55,89 @@
 button{
     border: none;
 }
+
+.Btn-edit {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90px;
+    height: 30px;
+    border: none;
+    padding: 0px 25px;
+    background-color: rgb(71, 38, 255);
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    transition-duration: .3s;
+    font-size: 13px;
+  }
+  
+  .svg {
+    width: 13px;
+    position: absolute;
+    right: 0;
+    margin-right: 5px;
+    fill: white;
+    transition-duration: .3s;
+  }
+  
+  .Btn-edit:hover {
+    color: transparent;
+  }
+  
+  .Btn-edit:hover svg {
+    right: 43%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    transition-duration: .3s;
+  }
+  
+  .Btn-edit:active {
+    transform: translate(3px , 3px);
+    transition-duration: .3s;
+    box-shadow: 2px 2px 0px rgb(140, 32, 212);
+  }
+
+  .Btn-delete {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90px;
+    height: 30px;
+    border: none;
+    padding: 0px 25px;
+    background-color: rgb(255, 38, 38);
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+
+    transition-duration: .3s;
+    font-size: 13px;
+  }
+  
+  
+  .Btn-delete:hover {
+    color: transparent;
+  }
+  
+  .Btn-delete:hover svg {
+    right: 43%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    transition-duration: .3s;
+  }
+  
+  .Btn-delete:active {
+    transform: translate(3px , 3px);
+    transition-duration: .3s;
+    box-shadow: 2px 2px 0px rgb(212, 32, 32);
+  }
+  .btn-edit-delete{
+    display: flex;
+    justify-content: center;
+  }
+
