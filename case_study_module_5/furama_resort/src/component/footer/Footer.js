@@ -13,10 +13,10 @@ export default function Footer() {
                <div className="row">
                   <div className=" col-md-4">
                      <h3>Contact US</h3>
-                     <ul className="conta">
-                        <li> Address: Đà Nẵng</li>
-                        <li> Phone: 0842007468</li>
-                        <li> Email: bondatfpt@gmail.com</li>
+                     <ul className="link_menu" style={{color:"white"}}>
+                        <li><a > Address: Đà Nẵng</a></li>
+                        <li><a> Phone: 0842007468</a></li>
+                        <li><a> Email: bondatfpt@gmail.com</a></li>
                      </ul>
                   </div>
                   <div className="col-md-4">

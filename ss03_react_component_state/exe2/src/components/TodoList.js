@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 
 export default class TodoList extends Component {
-  constructor(props) {
-    super(props);
-
+  constructor() {
     this.state = {
       valueInput: "",
       listTodo: [],

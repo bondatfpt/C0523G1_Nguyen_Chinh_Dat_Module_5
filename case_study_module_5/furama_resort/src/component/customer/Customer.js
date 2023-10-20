@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./Customer.css";
@@ -9,7 +10,7 @@ export default function () {
       <div className="our_room">
         <div style={{ marginTop: "-45px" }}>
           <h3>
-            <a
+            <Link
               className="highlight-link"
               style={{
                 color: "black",
@@ -17,10 +18,10 @@ export default function () {
                 justifyContent: "center",
                 display: "flex",
               }}
-              href="create-customer.html"
+              to="/customers/new"
             >
               Add a new customer
-            </a>
+            </Link>
           </h3>
         </div>
         <div className="container-fluid">
