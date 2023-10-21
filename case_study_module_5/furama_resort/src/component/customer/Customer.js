@@ -13,9 +13,7 @@ export default function () {
       try {
         const response = await axios.get("http://localhost:8080/api/customers");
         setCustomerList(response.data);
-      } catch (error) {
-        console.error(error);
-      }
+      } catch (error) {}
     };
     fetchData();
   }, []);
