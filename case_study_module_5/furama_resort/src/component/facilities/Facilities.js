@@ -8,8 +8,6 @@ export default function () {
   const [villaList, setVillaList] = useState([]);
   const [houseList, setHouseList] = useState([]);
   const [roomList, setRoomList] = useState([]);
-  console.log(houseList);
-  console.log(roomList);
 
   useEffect(() => {
     const fetchData = async () => {

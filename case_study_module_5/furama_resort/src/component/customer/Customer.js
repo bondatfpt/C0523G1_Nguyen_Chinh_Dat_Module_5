@@ -1,10 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./Customer.css";
 
 export default function () {
+  const [customerList, setCustomerList] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/customers");
+        setCustomerList(response.data);
+      } catch (error) {}
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <div className="back_re">
@@ -45,7 +58,6 @@ export default function () {
                   <th scope="col">Date Of Birth</th>
                   <th scope="col">Gender</th>
                   <th scope="col">Identity Number</th>
-                  <th scope="col">Phone Number</th>
                   <th scope="col">Email</th>
                   <th scope="col">Type</th>
                   <th scope="col">Address</th>
@@ -55,64 +67,38 @@ export default function () {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>22-06-1999</td>
-                  <td>Male</td>
-                  <td>036099638500</td>
-                  <td>0123456789</td>
-                  <td>bondat@gmail.com</td>
-                  <td>Diamond</td>
-                  <td>Florida, America</td>
-                  <td>
-                    <button
-                      type="button"
-                      className="btn btn-primary"
-                      data-bs-toggle="modal"
-                      data-bs-target="#update"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-danger"
-                      data-bs-toggle="modal"
-                      data-bs-target="#delete"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>22-06-1999</td>
-                  <td>Male</td>
-                  <td>036099638500</td>
-                  <td>0123456789</td>
-                  <td>bondat@gmail.com</td>
-                  <td>Diamond</td>
-                  <td>Florida, America</td>
-                  <td>
-                    <button
-                      type="button"
-                      className="btn btn-primary"
-                      data-bs-toggle="modal"
-                      data-bs-target="#update"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-danger"
-                      data-bs-toggle="modal"
-                      data-bs-target="#delete"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
+                {customerList.map((customer,index) => {
+                  return (
+                    <tr key={customer.id}>
+                      <th scope="row">{index + 1}</th>
+                      <td>{customer.name}</td>
+                      <td><input className="dark" type="date" value={customer.birthday} readOnly style={{border:"none"}} ></input></td>
+                      <td>{customer.gender}</td>
+                      <td>{customer.identityNumber}</td>
+                      <td>{customer.email}</td>
+                      <td>{customer.customerType.name}</td>
+                      <td>{customer.address}</td>
+                      <td>
+                        <button
+                          type="button"
+                          className="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#update"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-danger"
+                          data-bs-toggle="modal"
+                          data-bs-target="#delete"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
