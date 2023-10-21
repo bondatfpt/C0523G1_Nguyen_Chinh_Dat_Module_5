@@ -13,7 +13,9 @@ export default function () {
       try {
         const response = await axios.get("http://localhost:8080/api/customers");
         setCustomerList(response.data);
-      } catch (error) {}
+      } catch (error) {
+        console.error(error);
+      }
     };
     fetchData();
   }, []);
@@ -50,7 +52,7 @@ export default function () {
         </div>
         <div className="container-fluid">
           <div className="row">
-            <table className="table table-striped table-dark">
+            <table className="table  table-dark">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -72,8 +74,8 @@ export default function () {
                     <tr key={customer.id}>
                       <th scope="row">{index + 1}</th>
                       <td>{customer.name}</td>
-                      <td><input className="dark" type="date" value={customer.birthday} readOnly style={{border:"none"}} ></input></td>
-                      <td>{customer.gender}</td>
+                      <td><input type="date" value={customer.birthday} readOnly style={{border:"none",backgroundColor:"#212529", color:"white"}} ></input></td>
+                      <td>{customer.gender ? "Femail" : "Male"}</td>
                       <td>{customer.identityNumber}</td>
                       <td>{customer.email}</td>
                       <td>{customer.customerType.name}</td>

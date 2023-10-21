@@ -20,7 +20,7 @@ public class RestCustomer {
     private ICustomerService iCustomerService;
 
     @GetMapping("/api/customers")
-    public ResponseEntity<List<Customer>> showList(@PageableDefault(value = 0, size = 2) Pageable pageable) {
+    public ResponseEntity<List<Customer>> showList() {
         List<Customer> customers = iCustomerService.findAll();
         if (customers.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
