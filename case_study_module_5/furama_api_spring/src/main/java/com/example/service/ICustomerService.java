@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface ICustomerService {
     List<Customer> findAll ();
+
+    void save (Customer customer);
+
+    void delete (Integer id);
 }

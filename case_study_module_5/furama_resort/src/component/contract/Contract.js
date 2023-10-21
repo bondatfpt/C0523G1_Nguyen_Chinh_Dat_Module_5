@@ -9,7 +9,7 @@ export default function Contract() {
     const fetchData = async () => {
       try {
         const response4 = await axios.get(
-          "http://localhost:8080/api/contracts"
+          "http://localhost:8080/api/contracts/"
         );
         setContractList(response4.data);
       } catch (error) {}

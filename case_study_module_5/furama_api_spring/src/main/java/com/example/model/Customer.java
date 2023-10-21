@@ -1,5 +1,6 @@
 package com.example.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -21,7 +22,8 @@ public class Customer {
     private String address;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference
+    @JsonIgnore
     @JoinColumn(name = "type_id", referencedColumnName = "id")
     private CustomerType customerType;
 

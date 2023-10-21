@@ -1,9 +1,9 @@
 import React from "react";
 import { Formik,Form,Field } from "formik";
-import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import { Link } from "react-router-dom";
 
-export default function CreateCustomer() {
+export default function UpdateCustomer() {
   const validationSchema = Yup.object({
     name: Yup.string().required("Enter name")
   })
@@ -14,7 +14,7 @@ export default function CreateCustomer() {
           <div className="row">
             <div className="col-md-12">
               <div className="title">
-                <h2>Create Customer</h2>
+                <h2>Update Customer</h2>
               </div>
             </div>
           </div>
@@ -150,7 +150,7 @@ export default function CreateCustomer() {
                               }}
                               id="submitButton"
                               type="submit"
-                              className="btn btn-lg"
+                              className="btn  btn-lg"
                             >
                               Save
                             </button>

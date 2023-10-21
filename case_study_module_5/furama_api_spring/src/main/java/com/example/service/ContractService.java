@@ -16,4 +16,14 @@ public class ContractService implements IContractService {
     public List<Contract> findAll() {
         return iContractReposiroty.findAll();
     }
+
+    @Override
+    public void save(Contract contract) {
+        iContractReposiroty.save(contract);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        iContractReposiroty.deleteById(id);
+    }
 }

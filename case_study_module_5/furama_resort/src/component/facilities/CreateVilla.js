@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function CreateVilla() {
   return (
@@ -14,10 +15,15 @@ export default function CreateVilla() {
           </div>
         </div>
       </div>
-        <div className="our_room">
+        <div className="our_room"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
   <section>
-    <div className="container py-5 h-100">
-      <div className="row d-flex justify-content-center align-items-center h-100">
+    <div className="container">
+      <div className="row d-flex justify-content-center align-items-center ">
         <div className="col">
           <div className="card card-registration my-6">
             <div className="col-md-12">
@@ -141,7 +147,7 @@ export default function CreateVilla() {
                     />
                   </div>
                   <div className="d-flex justify-content-end">
-                    <button
+                    <Link to = "/"
                       style={{
                         marginRight: 20,
                         backgroundColor: "green",
@@ -153,7 +159,7 @@ export default function CreateVilla() {
                       className="btn btn-lg "
                     >
                       Close
-                    </button>
+                    </Link>
                     <button
                       style={{
                         backgroundColor: "green",
