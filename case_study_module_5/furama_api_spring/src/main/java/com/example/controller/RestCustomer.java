@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.model.Customer;
 import com.example.service.ICustomerService;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

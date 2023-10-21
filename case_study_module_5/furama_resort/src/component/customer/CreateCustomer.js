@@ -1,12 +1,62 @@
 import React from "react";
-import { Formik,Form,Field } from "formik";
+import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 export default function CreateCustomer() {
-  const validationSchema = Yup.object({
-    name: Yup.string().required("Enter name")
-  })
+  const [customerTypes, setCustomerTypes] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/api/customer-types/"
+        );
+        setCustomerTypes(response.data);
+      } catch (error) {}
+    };
+    fetchData();
+  }, []);
+
+  const handleSubmit = (values) => {
+    axios
+      .post("http://localhost:8080/api/customers", values)
+      .then((response) => {
+        // Xử lý phản hồi thành công từ API
+        console.log(response.data);
+      })
+      .catch((error) => {
+        // Xử lý lỗi từ API
+        console.error(error);
+      });
+  };
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      birthday: "",
+      gender: true,
+      identityNumber: "",
+      email: "",
+      customerType: {},
+      address: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+      console.log(values.customerType);
+      // const data = {
+      //   name: values.name,
+      //   birthday: values.birthday,
+      //   gender: values.gender,
+      //   identityNumber: values.identityNumber,
+      //   email: values.email,
+      //   customerTypes: JSON.stringify(values.customerType),
+      //   address: values.address,
+      // };
+      handleSubmit(values);
+    },
+  });
+
   return (
     <div>
       <div className="back_re">
@@ -20,15 +70,16 @@ export default function CreateCustomer() {
           </div>
         </div>
       </div>
-      <div className="our_room"  style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}>
+      <div
+        className="our_room"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <div>
-          <section
-         
-          >
+          <section>
             <div className="container">
               <div className="row d-flex justify-content-center align-items-center">
                 <div className="col">
@@ -38,13 +89,14 @@ export default function CreateCustomer() {
                         className="card-body text-black"
                         style={{ padding: "20px 50px" }}
                       >
-                        <Formik>
-                        <form>
+                        <form onSubmit={formik.handleSubmit}>
                           <div className="row">
                             <div className="col-md-6 mb-2">
                               <div className="form-outline">
                                 <label className="form-label">Full Name</label>
                                 <input
+                                  onChange={formik.handleChange}
+                                  value={formik.values.name}
                                   id="name"
                                   name="name"
                                   type="text"
@@ -56,50 +108,50 @@ export default function CreateCustomer() {
                                   Date Of Birth
                                 </label>
                                 <input
-                                  required=""
+                                  value={formik.values.birthday}
+                                  onChange={formik.handleChange}
+                                  id="birthday"
+                                  name="birthday"
                                   type="date"
                                   className="form-control form-control-lg "
                                 />
                               </div>
                               <div className="form-outline ">
                                 <label className="form-label">Gender</label>
-                                <select className="form-control form-control-lg ">
-                                  <option value="">Male</option>
-                                  <option value="">Female</option>
+                                <select
+                                  onChange={formik.handleChange}
+                                  value={formik.values.gender}
+                                  className="form-control form-control-lg"
+                                  name="gender"
+                                >
+                                  <option value={false}>Male</option>
+                                  <option value={true}>Female</option>
                                 </select>
                               </div>
+                            </div>
+                            <div className="col-md-6 mb-2">
                               <div className="form-outline ">
                                 <label className="form-label">
                                   Identity Number
                                 </label>
                                 <input
-                                  required=""
+                                  value={formik.values.identityNumber}
+                                  onChange={formik.handleChange}
                                   type="number"
+                                  name="identityNumber"
+                                  id="identityNumber"
                                   className="form-control form-control-lg"
                                 />
                               </div>
-                            </div>
-                            <div className="col-md-6 mb-2">
                               <div className="form-outline">
-                                <label
-                                  className="form-label"
-                                  htmlFor="passwordConfirm"
-                                >
-                                  Phone Number
-                                </label>
-                                <input
-                                  className="form-control form-control-lg custom-input "
-                                  type="number"
-                                />
-                              </div>
-                              <div className="form-outline">
-                                <label
-                                  className="form-label"
-                                  htmlFor="passwordConfirm"
-                                >
+                                <label className="form-label" htmlFor="email">
                                   Email
                                 </label>
                                 <input
+                                  value={formik.values.email}
+                                  onChange={formik.handleChange}
+                                  name="email"
+                                  id="email"
                                   className="form-control form-control-lg "
                                   type="email"
                                 />
@@ -108,28 +160,41 @@ export default function CreateCustomer() {
                                 <label className="form-label">
                                   Customer Type
                                 </label>
-                                <select className="form-control form-control-lg ">
-                                  <option value="">Bronze</option>
-                                  <option value="">Sliver</option>
-                                  <option value="">Gold</option>
-                                </select>
-                              </div>
-                              <div className="form-outline">
-                                <label
-                                  className="form-label"
-                                  htmlFor="passwordConfirm"
+                                <select
+                                  className="form-control form-control-lg"
+                                  id="customerType"
+                                  value={formik.values.customerType}
+                                  onChange={formik.handleChange}
+                                  name="customerType"
                                 >
-                                  Address
-                                </label>
-                                <input
-                                  className="form-control form-control-lg "
-                                  type="email"
-                                />
+                                  {customerTypes.map((type) => (
+                                    <option key={type.id} value={type}>
+                                      {type.name}
+                                    </option>
+                                  ))}
+                                </select>
                               </div>
                             </div>
                           </div>
-                          <div className="d-flex justify-content-end">
-                            <Link to = "/customers"
+                          <div className="form-outline">
+                            <label className="form-label" htmlFor="address">
+                              Address
+                            </label>
+                            <input
+                              value={formik.values.address}
+                              onChange={formik.handleChange}
+                              className="form-control form-control-lg "
+                              type="text"
+                              id="address"
+                              name="address"
+                            />
+                          </div>
+                          <div
+                            className="d-flex justify-content-end"
+                            style={{ marginTop: "20px" }}
+                          >
+                            <Link
+                              to="/customers"
                               style={{
                                 marginRight: 20,
                                 backgroundColor: "green",
@@ -156,7 +221,6 @@ export default function CreateCustomer() {
                             </button>
                           </div>
                         </form>
-                        </Formik>
                       </div>
                     </div>
                   </div>
