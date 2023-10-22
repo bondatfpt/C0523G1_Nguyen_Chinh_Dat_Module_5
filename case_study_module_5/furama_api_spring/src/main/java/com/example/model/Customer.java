@@ -22,8 +22,7 @@ public class Customer {
     private String email;
     private String address;
 
-    @ManyToOne()
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @ManyToOne
     @JsonBackReference
     @JsonIgnore
     @JoinColumn(name = "type_id", referencedColumnName = "id")

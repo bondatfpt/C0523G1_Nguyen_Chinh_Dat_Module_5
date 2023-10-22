@@ -1,9 +1,6 @@
 package com.example.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import javax.persistence.*;
@@ -24,6 +21,17 @@ public class CustomerType {
     }
 
     public CustomerType(String name, Set<Customer> customers) {
+        this.name = name;
+        this.customers = customers;
+    }
+
+    public CustomerType(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public CustomerType(Integer id, String name, Set<Customer> customers) {
+        this.id = id;
         this.name = name;
         this.customers = customers;
     }

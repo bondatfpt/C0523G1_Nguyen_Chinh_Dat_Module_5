@@ -1,8 +1,11 @@
 package com.example.controller;
 
 import com.example.model.Customer;
+import com.example.model.CustomerType;
 import com.example.service.ICustomerService;
+import com.example.service.ICustomerTypeService;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +19,8 @@ import java.util.List;
 public class RestCustomer {
     @Autowired
     private ICustomerService iCustomerService;
+    @Autowired
+    private ICustomerTypeService iCustomerTypeService;
 
     @GetMapping("/")
     public ResponseEntity<List<Customer>> showList() {

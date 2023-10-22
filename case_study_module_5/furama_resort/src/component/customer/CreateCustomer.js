@@ -38,22 +38,27 @@ export default function CreateCustomer() {
       gender: true,
       identityNumber: "",
       email: "",
-      customerType: {},
+      customerType: undefined,
       address: "",
     },
     onSubmit: (values) => {
       console.log(values);
       console.log(values.customerType);
-      // const data = {
-      //   name: values.name,
-      //   birthday: values.birthday,
-      //   gender: values.gender,
-      //   identityNumber: values.identityNumber,
-      //   email: values.email,
-      //   customerTypes: JSON.stringify(values.customerType),
-      //   address: values.address,
-      // };
-      handleSubmit(values);
+      const selectedTypeId = parseInt(formik.values.customerType);
+      const selectedType = customerTypes.find(
+        (type) => type.id === selectedTypeId
+      );
+        const data = {
+          name: values.name,
+          birthday : values.birthday,
+          gender: values.gender,
+          identityNumber: values.identityNumber,
+          email: values.email,
+          customerType: selectedType,
+          address : values.address
+        }
+        console.log(data);
+      handleSubmit(data);
     },
   });
 
@@ -168,7 +173,7 @@ export default function CreateCustomer() {
                                   name="customerType"
                                 >
                                   {customerTypes.map((type) => (
-                                    <option key={type.id} value={type}>
+                                    <option key={type.id} value={type.id}>
                                       {type.name}
                                     </option>
                                   ))}
