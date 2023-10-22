@@ -38,26 +38,29 @@ export default function CreateCustomer() {
       gender: true,
       identityNumber: "",
       email: "",
-      customerType: undefined,
+      customerType: {
+        id: 5,
+        name: "member",
+      },
       address: "",
     },
     onSubmit: (values) => {
       console.log(values);
       console.log(values.customerType);
-      const selectedTypeId = parseInt(formik.values.customerType);
+      const selectedTypeId = parseInt(formik.values.customerType.id);
       const selectedType = customerTypes.find(
         (type) => type.id === selectedTypeId
       );
-        const data = {
-          name: values.name,
-          birthday : values.birthday,
-          gender: values.gender,
-          identityNumber: values.identityNumber,
-          email: values.email,
-          customerType: selectedType,
-          address : values.address
-        }
-        console.log(data);
+      const data = {
+        name: values.name,
+        birthday: values.birthday,
+        gender: values.gender,
+        identityNumber: values.identityNumber,
+        email: values.email,
+        customerType: selectedType,
+        address: values.address,
+      };
+      console.log(data);
       handleSubmit(data);
     },
   });
@@ -124,6 +127,7 @@ export default function CreateCustomer() {
                               <div className="form-outline ">
                                 <label className="form-label">Gender</label>
                                 <select
+                                  required
                                   onChange={formik.handleChange}
                                   value={formik.values.gender}
                                   className="form-control form-control-lg"
@@ -171,7 +175,9 @@ export default function CreateCustomer() {
                                   value={formik.values.customerType}
                                   onChange={formik.handleChange}
                                   name="customerType"
+                                  required
                                 >
+                                  <option value={undefined}>Select Type</option>
                                   {customerTypes.map((type) => (
                                     <option key={type.id} value={type.id}>
                                       {type.name}
