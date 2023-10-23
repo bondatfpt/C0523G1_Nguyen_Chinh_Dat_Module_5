@@ -25,4 +25,9 @@ public class CustomerService implements ICustomerService{
     public void delete(Integer id) {
         iCustomerRepository.deleteById(id);
     }
+
+    @Override
+    public Customer findById(Integer id) {
+        return iCustomerRepository.findById(id).orElse(null);
+    }
 }

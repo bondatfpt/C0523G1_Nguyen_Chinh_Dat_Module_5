@@ -11,7 +11,9 @@ export default function Customer() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/customers/");
+        const response = await axios.get(
+          "http://localhost:8080/api/customers/"
+        );
         setCustomerList(response.data);
       } catch (error) {}
     };
@@ -61,7 +63,7 @@ export default function Customer() {
                   <th scope="col">Email</th>
                   <th scope="col">Type</th>
                   <th scope="col">Address</th>
-                  <th scope="col" colSpan={2} style={{textAlign:"center"}}>
+                  <th scope="col" colSpan={2} style={{ textAlign: "center" }}>
                     Action
                   </th>
                 </tr>
@@ -94,7 +96,8 @@ export default function Customer() {
                           <div className="col-md 6">
                             <div className="row">
                               <div className="col-md-6 btn-edit-delete">
-                                <Link to="/customers/update"
+                                <Link
+                                  to={`/customers/update/${customer.id}`}
                                   className="Btn-edit"
                                   style={{ textAlign: "center" }}
                                 >
@@ -105,7 +108,7 @@ export default function Customer() {
                                 </Link>
                               </div>
                               <div className="col-md-6 btn-edit-delete">
-                                <button 
+                                <button
                                   className="Btn-delete"
                                   style={{ textAlign: "center" }}
                                 >

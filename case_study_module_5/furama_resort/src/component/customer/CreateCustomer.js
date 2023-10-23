@@ -9,6 +9,7 @@ export default function CreateCustomer() {
   const [customerTypes, setCustomerTypes] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
+      console.log("useEffect customer type run");
       try {
         const response = await axios.get(
           "http://localhost:8080/api/customer-types/"
@@ -47,7 +48,7 @@ export default function CreateCustomer() {
     onSubmit: (values) => {
       console.log(values);
       console.log(values.customerType);
-      const selectedTypeId = parseInt(formik.values.customerType.id);
+      const selectedTypeId = parseInt(formik.values.customerType);
       const selectedType = customerTypes.find(
         (type) => type.id === selectedTypeId
       );

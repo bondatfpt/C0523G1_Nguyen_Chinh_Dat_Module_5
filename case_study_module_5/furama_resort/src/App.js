@@ -23,14 +23,14 @@ function App() {
         <Route path="/" element={<Facilities />} />
         <Route path="/customers" element={<Customer />} />
         <Route path="/customers/new" element={<CreateCustomer/>} />
-        <Route path="/customers/update" element={<UpdateCustomer/>} />
+        <Route path="/customers/update/:id" element={<UpdateCustomer/>} />
         <Route path="/contracts" element={<Contract />} />
         <Route path="/villa/new" element={<CreateVilla />} />
         <Route path="/house/new" element={<CreateHouse />} />
         <Route path="/room/new" element={<CreateRoom />} />
-        <Route path="/villa/update" element={<UpdateVilla />} />
-        <Route path="/house/update" element={<UpdateHouse />} />
-        <Route path="/room/update" element={<UpdateRoom />} />
+        <Route path="/villa/update/:id" element={<UpdateVilla />} />
+        <Route path="/house/update/:id" element={<UpdateHouse />} />
+        <Route path="/room/update/:id" element={<UpdateRoom />} />
       </Routes>
       <Footer />
     </div>

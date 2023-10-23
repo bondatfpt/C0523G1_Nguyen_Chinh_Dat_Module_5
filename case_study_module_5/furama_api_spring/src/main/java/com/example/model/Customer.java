@@ -23,7 +23,7 @@ public class Customer {
     private String address;
 
     @ManyToOne
-    @JsonBackReference
+     @JsonBackReference
     @JsonIgnore
     @JoinColumn(name = "type_id", referencedColumnName = "id")
     private CustomerType customerType;

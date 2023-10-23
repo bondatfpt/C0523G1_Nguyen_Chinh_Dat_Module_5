@@ -1,11 +1,8 @@
 package com.example.controller;
 
 import com.example.model.Customer;
-import com.example.model.CustomerType;
 import com.example.service.ICustomerService;
 import com.example.service.ICustomerTypeService;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +26,16 @@ public class RestCustomer {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }else {
             return new ResponseEntity<>(customers,HttpStatus.OK);
+        }
+    }
+
+    @GetMapping ("/{id}")
+    public ResponseEntity<Customer> getCustomerById (@PathVariable Integer id){
+        Customer customer = iCustomerService.findById(id);
+        if (customer != null){
+            return  new ResponseEntity<>(customer, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     @PostMapping

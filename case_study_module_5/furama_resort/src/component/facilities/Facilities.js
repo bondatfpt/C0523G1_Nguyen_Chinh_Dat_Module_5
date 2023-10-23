@@ -12,9 +12,9 @@ export default function Facilities () {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response1 = await axios.get("http://localhost:3001/villas");
-        const response2 = await axios.get("http://localhost:3001/houses");
-        const response3 = await axios.get("http://localhost:3001/rooms");
+        const response1 = await axios.get("http://localhost:3030/villas");
+        const response2 = await axios.get("http://localhost:3030/houses");
+        const response3 = await axios.get("http://localhost:3030/rooms");
         setVillaList(response1.data);
         setHouseList(response2.data);
         setRoomList(response3.data);
