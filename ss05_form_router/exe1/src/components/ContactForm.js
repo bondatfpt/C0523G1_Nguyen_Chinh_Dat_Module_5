@@ -10,6 +10,9 @@ export default function ContactForm() {
     phone: "",
     message: "",
   };
+  const handleFormSubmit = (values) => {
+    toast.success("Add contact successfully!!!");
+  };
   const validateObject = {
     name: Yup.string().required("Name can't be blank!"),
     email: Yup.string()
@@ -24,9 +27,7 @@ export default function ContactForm() {
     <>
       <Formik
         initialValues={initValue}
-        onSubmit={(values) => {
-          toast.success("Add contact successfully!!!");
-        }}
+        onSubmit={handleFormSubmit}
         validationSchema={Yup.object(validateObject)}
       >
         <section className="bg-image">

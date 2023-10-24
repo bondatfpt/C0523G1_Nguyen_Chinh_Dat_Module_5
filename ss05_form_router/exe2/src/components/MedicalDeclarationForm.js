@@ -23,6 +23,9 @@ export default function MedicalDeclarationForm() {
     signal: false,
     contact: false,
   };
+  const handleFormSubmit = (values) => {
+    toast.success("Add contact successfully!!!");
+  };
   const validateObject = {
     name: Yup.string().required("Không được để trống!"),
     identityNumber: Yup.string().required("Không được để trống!"),
@@ -42,12 +45,8 @@ export default function MedicalDeclarationForm() {
     <div>
       <Formik
         initialValues={initValue}
-        onSubmit={(values) => {
-          console.log(values);
-          toast.success("Khai báo thành công");
-        }}
+        onSubmit={handleFormSubmit}
         validationSchema={Yup.object(validateObject)}
-        
       >
         <section
           style={{
