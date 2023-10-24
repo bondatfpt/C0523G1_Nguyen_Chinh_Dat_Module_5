@@ -1,4 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./component/header/Header";
@@ -32,6 +34,7 @@ function App() {
         <Route path="/house/update/:id" element={<UpdateHouse />} />
         <Route path="/room/update/:id" element={<UpdateRoom />} />
       </Routes>
+      <ToastContainer></ToastContainer>
       <Footer />
     </div>
   );

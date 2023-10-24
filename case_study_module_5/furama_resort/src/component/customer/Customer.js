@@ -52,7 +52,7 @@ export default function Customer() {
         </div>
         <div className="container-fluid">
           <div className="row">
-            <table className="table  table-dark">
+            <table className="table-responsive table m-b-40  table-dark">
               <thead>
                 <tr>
                   <th scope="col">#</th>

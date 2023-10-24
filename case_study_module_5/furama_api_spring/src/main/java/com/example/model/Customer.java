@@ -8,7 +8,7 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "customers")
+@Table(name = "customers")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class Customer {
     private String address;
 
     @ManyToOne
-     @JsonBackReference
+    @JsonBackReference
     @JsonIgnore
     @JoinColumn(name = "type_id", referencedColumnName = "id")
     private CustomerType customerType;

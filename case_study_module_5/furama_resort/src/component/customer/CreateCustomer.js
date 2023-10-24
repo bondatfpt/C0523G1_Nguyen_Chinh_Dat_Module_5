@@ -52,17 +52,9 @@ export default function CreateCustomer() {
       const selectedType = customerTypes.find(
         (type) => type.id === selectedTypeId
       );
-      const data = {
-        name: values.name,
-        birthday: values.birthday,
-        gender: values.gender,
-        identityNumber: values.identityNumber,
-        email: values.email,
-        customerType: selectedType,
-        address: values.address,
-      };
-      console.log(data);
-      handleSubmit(data);
+      values.customerType = selectedType;
+      console.log(values);
+      handleSubmit(values);
     },
   });
 
@@ -178,7 +170,6 @@ export default function CreateCustomer() {
                                   name="customerType"
                                   required
                                 >
-                                  <option value={undefined}>Select Type</option>
                                   {customerTypes.map((type) => (
                                     <option key={type.id} value={type.id}>
                                       {type.name}
