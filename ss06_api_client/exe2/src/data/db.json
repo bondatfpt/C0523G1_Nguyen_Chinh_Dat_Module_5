@@ -1,11 +1,6 @@
 {
   "books": [
     {
-      "id": 2,
-      "title": "book number two",
-      "quantity": 100
-    },
-    {
       "id": 5,
       "title": "One Piece",
       "quantity": 100
@@ -14,6 +9,11 @@
       "id": 6,
       "title": "React",
       "quantity": 100
+    },
+    {
+      "title": "Book1",
+      "quantity": 4,
+      "id": 7
     }
   ]
 }

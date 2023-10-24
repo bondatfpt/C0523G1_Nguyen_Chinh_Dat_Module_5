@@ -1,11 +1,10 @@
 import React from "react";
-import { useState } from "react";
-
+import { useCounter } from "./custom_hook/UseCounter";
 export default function Counter1() {
-  const [count1, setCount1] = useState(0);
+  const [count1, setCount1] = useCounter(1);
   const handleChange1 = () => {
-    const newValue = count1 + 1;
-    setCount1(newValue);
+    setCount1();
+    console.log(count1);
   };
   return (
     <div>
