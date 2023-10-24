@@ -10,7 +10,6 @@ import ModalConFirm from "./components/ModalConFirm";
 function App() {
   return (
     <div>
-      <ModalConFirm/>
       <Routes>
         <Route path="/books" element={<BookList />}></Route>
         <Route path="/new" element={<Create />}></Route>
