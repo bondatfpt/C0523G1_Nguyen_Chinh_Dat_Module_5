@@ -10,24 +10,15 @@ import { remove } from "../service/BookService";
 export default function BookList() {
   const [showModal, setShowModal] = useState(false);
   const [books, setBooks] = useState();
+  const [id, setId] = useState ();
 
   const handleShow = () => {
-    setShowModal(!showModal);
+    setShowModal(true);
   };
-
-  const handleDelete = async (id) => {
-    try {
-      await remove(id); // Call the remove function with the specified id
-      const updatedBooks = books.filter((item) => item.id !== id);
-      setBooks(updatedBooks);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const sendInfoToModal = (id) => {
-    document.getElementById("idDelete").value = id;
-  }
+  
+   const handleClose = () =>{
+    setShowModal(false);
+   }
 
 
   useEffect(() => {
@@ -83,7 +74,7 @@ export default function BookList() {
           })}
         </tbody>
       </table>
-      <ModalConFirm showModal={showModal} handleShow={handleShow} handleDelete= {handleDelete} />
+      <ModalConFirm showModal={showModal}  handleShow={handleShow} handleClose = {handleClose} />
     </div>
   );
 }
