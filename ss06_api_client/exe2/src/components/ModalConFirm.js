@@ -2,20 +2,21 @@ import React from "react";
 import {Modal,Button} from "react-bootstrap";
 import axios from "axios";
 import { remove } from "../service/BookService";
+import { useNavigate } from "react-router-dom";
 
 export default function ModalConFirm ({ showModal, handleClose, id}) {
+  const navigate = useNavigate ();
   const handleDelete = () => {
-    remove(id);
-  }
-
-  console.log(id);
+  const response =  remove(id);
+    navigate("/books")
+}
   return (
     <div>
       <Modal show={showModal} animation={false}>
         <Modal.Header >
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Delete Confirm</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body>Are you sure to delete this book?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

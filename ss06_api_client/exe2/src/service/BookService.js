@@ -37,6 +37,7 @@ export const findById = async (id) => {
 export const remove = async (id) => {
     try {
         const response = await axios.delete("http://localhost:3001/books/" + id)
+        return response.status;
     } catch (error) {
         console.log(error);
     }

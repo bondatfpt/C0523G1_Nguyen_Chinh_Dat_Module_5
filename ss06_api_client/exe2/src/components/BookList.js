@@ -14,7 +14,7 @@ export default function BookList() {
 
   const handleShow = async (id) => {
     setShowModal(true);
-    setId(id)
+    setId(id);
   };
   
    const handleClose = () =>{

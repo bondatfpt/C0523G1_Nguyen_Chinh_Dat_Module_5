@@ -1,19 +1,9 @@
 {
   "books": [
     {
-      "id": 1,
-      "title": "Công chúa bong bóng",
-      "quantity": 10000
-    },
-    {
       "id": 2,
       "title": "book number two",
       "quantity": 100
-    },
-    {
-      "id": 4,
-      "title": "Conan",
-      "quantity": 10
     },
     {
       "id": 5,
@@ -22,7 +12,7 @@
     },
     {
       "id": 6,
-      "title": "React là thư viện rất chi là xàm lz ",
+      "title": "React",
       "quantity": 100
     }
   ]
