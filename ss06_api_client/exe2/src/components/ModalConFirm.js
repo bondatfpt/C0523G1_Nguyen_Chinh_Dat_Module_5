@@ -3,11 +3,16 @@ import {Modal,Button} from "react-bootstrap";
 import axios from "axios";
 import { remove } from "../service/BookService";
 
-export default function ModalConFirm ({handleShow, showModal, handleClose}) {
+export default function ModalConFirm ({ showModal, handleClose, id}) {
+  const handleDelete = () => {
+    remove(id);
+  }
+
+  console.log(id);
   return (
     <div>
-      <Modal show={showModal} onHide={handleShow} animation={false}>
-        <Modal.Header closeButton>
+      <Modal show={showModal} animation={false}>
+        <Modal.Header >
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
@@ -15,7 +20,7 @@ export default function ModalConFirm ({handleShow, showModal, handleClose}) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary">
+          <Button variant="primary" onClick={handleDelete}>
             Delete
           </Button>
         </Modal.Footer>

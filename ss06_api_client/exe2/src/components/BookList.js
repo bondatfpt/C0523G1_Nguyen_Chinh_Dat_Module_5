@@ -12,8 +12,9 @@ export default function BookList() {
   const [books, setBooks] = useState();
   const [id, setId] = useState ();
 
-  const handleShow = () => {
+  const handleShow = async (id) => {
     setShowModal(true);
+    setId(id)
   };
   
    const handleClose = () =>{
@@ -65,7 +66,7 @@ export default function BookList() {
                 </td>
                 <td>
                   {" "}
-                  <Button variant="danger" onClick={handleShow}  >
+                  <Button variant="danger" onClick={() => handleShow(item.id)}  >
                     Delete
                   </Button>
                 </td>
@@ -74,7 +75,7 @@ export default function BookList() {
           })}
         </tbody>
       </table>
-      <ModalConFirm showModal={showModal}  handleShow={handleShow} handleClose = {handleClose} />
+      <ModalConFirm showModal={showModal}  handleClose = {handleClose} id = {id} />
     </div>
   );
 }
