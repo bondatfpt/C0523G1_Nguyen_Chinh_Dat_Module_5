@@ -11,17 +11,13 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 export default function ModalConfirm({
   showModal,
-  setShowModal,
   customer,
-  setIsDeleted,
-  isDeleted,
+  handleHideModal
 }) {
-  // console.log(isDeleted);
   const navigate = useNavigate();
   const handleDelete = () => {
     remove(customer.id);
-    // setIsDeleted(true);
-    setShowModal(false);
+    handleHideModal();
     navigate("/customers");
     toast.success("Success Deleted");
   };
@@ -34,7 +30,7 @@ export default function ModalConfirm({
         </Modal.Header>
         <Modal.Body> Are you sure to delete this customer ? </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary">
+          <Button variant="primary"onClick={handleHideModal}>
             Close
           </Button>
           <Button variant="danger" onClick={handleDelete}>

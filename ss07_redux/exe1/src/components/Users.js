@@ -31,7 +31,7 @@ export default function Users() {
                       className="form-outline mb-4"
                     >
                       {" "}
-                      <h2>To Do List</h2>{" "}
+                      <h2>User List</h2>{" "}
                     </div>
                     <ul>
                       {users.map((user) => {

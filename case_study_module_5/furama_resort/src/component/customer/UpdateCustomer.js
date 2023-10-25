@@ -1,64 +1,51 @@
 import React from "react";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import { update, findById, getCustomerTypes } from "./service/CustomerService";
 
 export default function UpdateCustomer() {
   const navigate = useNavigate();
   const [customerUpdate, setCustomerUpdate] = useState();
+  const [customerTypes, setCustomerTypes] = useState();
   const { id } = useParams();
-  console.log("Customer Update Id: " + id);
+
   useEffect(() => {
-    const fetchData = async () => {
-      console.log("Use Effect customer run");
-      try {
-        const response = await axios.get(
-          "http://localhost:8080/api/customers/" + id
-        );
-        setCustomerUpdate(response.data);
-      } catch (error) {}
-    };
-    fetchData();
-  }, [id]);
-  console.log("Customer update" + customerUpdate);
-  const [customerTypes, setCustomerTypes] = useState([]);
-  useEffect(() => {
-    console.log("Use Effect customerType run");
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:8080/api/customer-types/"
-        );
-        setCustomerTypes(response.data);
-      } catch (error) {}
-    };
-    fetchData();
+    fetchDataCustomerUpdate();
   }, []);
 
-  const handleSubmit = (values) => {
-    axios
-      .put(`http://localhost:8080/api/customers/${values.id}`, values)
-      .then((response) => {
-        console.log(response.status);
-      })
-      .catch((error) => {
-        // Xử lý lỗi từ API
-      });
-  };
-  const [selectType, setSelectedType] = useState("");
+  useEffect(() => {
+    fetchDataCustomerTypes();
+  }, []);
 
-  const handleCustomerTypeChange = (e) => {
-    const selectedTypeValue = e.target.value;
-    setSelectedType(selectedTypeValue);
+  const fetchDataCustomerUpdate = async () => {
+    try {
+      const response = await findById(id);
+      console.log(response);
+      setCustomerUpdate(response);
+    } catch (error) {}
   };
 
-  if (!customerUpdate) {
+  const fetchDataCustomerTypes = async () => {
+    try {
+      const response = await getCustomerTypes();
+      console.log(customerTypes);
+      setCustomerTypes(response);
+    } catch (error) {}
+  };
+
+  const handleSubmit = (values, id) => {
+    update(values, id);
+    toast.success("Success Updated");
+    navigate("/customers");
+  };
+
+  if (!customerUpdate || !customerTypes) {
     return null;
   }
+
   const initValue = {
     id: customerUpdate.id,
     name: customerUpdate.name,
@@ -115,7 +102,6 @@ export default function UpdateCustomer() {
                         <Formik
                           initialValues={initValue}
                           onSubmit={(values) => {
-                            console.log(values);
                             const data = {
                               id: values.id,
                               name: values.name,
@@ -128,9 +114,7 @@ export default function UpdateCustomer() {
                               },
                               address: values.address,
                             };
-                            handleSubmit(data);
-                            toast.success("Success updated");
-                            navigate ("/customers");
+                            handleSubmit(data, id);
                           }}
                           validationSchema={Yup.object(validateCustomer)}
                         >
