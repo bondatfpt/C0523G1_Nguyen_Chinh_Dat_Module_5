@@ -1,18 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAll, remove } from "../reduxs/middlewares/UserMiddleware";
+import ModalConfirm from "./ModalConfirm";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
 
 export default function Users() {
   const users = useSelector((store) => store.users);
+  const [showModal, setShowModal] = useState (false);
+  const [idDelete, setIdDelete] = useState ();
   const dispatch = useDispatch();
+
+
+  const handleShowModal = (id) => {
+    setShowModal(true);
+    setIdDelete(id);
+  }
+
+  const handleHideModal = () => {
+    setShowModal(false);
+  }
+
   useEffect(() => {
     dispatch(getAll());
   }, []);
 
-  const handleDelete =  (id) => {
-     dispatch (remove(id));
-  }
+
   if (!users) {
     return null;
   }
@@ -36,9 +50,9 @@ export default function Users() {
                     <ul>
                       {users.map((user) => {
                         return (
-                          <li key={user.id}>
+                          <li key={user.id} style={{marginBottom:"20px"}}>
                             {user.name}
-                            <button onClick={()=>{handleDelete(user.id)}} >Delete</button>
+                            <button style={{marginLeft:"20px", padding:"5px"}} className="btn btn-danger" onClick={()=>{handleShowModal(user.id)}}>Delete</button>
                           </li>
                         );
                       })}
@@ -50,6 +64,7 @@ export default function Users() {
           </div>
         </div>
       </section>
+      <ModalConfirm showModal = {showModal} handleHideModal = {handleHideModal} idDelete = {idDelete}/>
     </div>
   );
 }
