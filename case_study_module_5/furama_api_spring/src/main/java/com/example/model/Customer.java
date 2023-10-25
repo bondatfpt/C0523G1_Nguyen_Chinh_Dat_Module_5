@@ -21,6 +21,7 @@ public class Customer {
     private String identityNumber;
     private String email;
     private String address;
+    private  String phoneNumber;
 
     @ManyToOne
     @JsonBackReference
@@ -29,6 +30,17 @@ public class Customer {
     private CustomerType customerType;
 
     public Customer() {
+    }
+
+    public Customer(String name, String birthday, boolean gender, String identityNumber, String email, String address, String phoneNumber, CustomerType customerType) {
+        this.name = name;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.identityNumber = identityNumber;
+        this.email = email;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.customerType = customerType;
     }
 
     public Customer(String name, String birthday, boolean gender, String identityNumber, String email, String address, CustomerType customerType) {
@@ -103,6 +115,14 @@ public class Customer {
 
     public void setCustomerType(CustomerType customerType) {
         this.customerType = customerType;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override

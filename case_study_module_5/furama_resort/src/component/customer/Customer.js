@@ -75,6 +75,7 @@ export default function Customer() {
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
                   <th scope="col">Date Of Birth</th>
+                  <th scope="col">Phone Number</th>
                   <th scope="col">Gender</th>
                   <th scope="col">Identity Number</th>
                   <th scope="col">Email</th>
@@ -103,6 +104,7 @@ export default function Customer() {
                           }}
                         ></input>
                       </td>
+                      <td>{customer.phoneNumber}</td>
                       <td>{customer.gender ? "Female" : "Male"}</td>
                       <td>{customer.identityNumber}</td>
                       <td>{customer.email}</td>

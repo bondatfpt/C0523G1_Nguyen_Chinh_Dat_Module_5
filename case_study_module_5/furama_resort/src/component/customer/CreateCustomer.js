@@ -38,6 +38,7 @@ export default function CreateCustomer() {
   const initValue = {
     name: "",
     birthday: "",
+    phoneNumber:"",
     gender: false,
     identityNumber: "",
     email: "",
@@ -74,6 +75,7 @@ export default function CreateCustomer() {
           const data = {
             id: values.id,
             name: values.name,
+            phoneNumber: values.phoneNumber,
             birthday: values.birthday,
             gender: values.gender,
             identityNumber: values.identityNumber,
@@ -149,6 +151,21 @@ export default function CreateCustomer() {
                                     <option value={true}>Female</option>
                                   </Field>
                                 </div>
+                                 <div className="form-outline">
+                              <label className="form-label">
+                                Address
+                              </label>
+                              <Field
+                                className="form-control form-control-lg "
+                                type="text"
+                                name="address"
+                              />
+                              <ErrorMessage
+                                name="address"
+                                component="span"
+                                style={{ color: "red" }}
+                              ></ErrorMessage>
+                            </div>
                               </div>
                               <div className="col-md-6 mb-2">
                                 <div className="form-outline ">
@@ -197,23 +214,24 @@ export default function CreateCustomer() {
                                     ))}
                                   </Field>
                                 </div>
-                              </div>
-                            </div>
-                            <div className="form-outline">
-                              <label className="form-label" htmlFor="address">
-                                Address
+                                <div className="form-outline">
+                              <label className="form-label" >
+                                Phone Number
                               </label>
                               <Field
                                 className="form-control form-control-lg "
                                 type="text"
-                                name="address"
+                                name="phoneNumber"
                               />
                               <ErrorMessage
-                                name="address"
+                                name="phoneNumber"
                                 component="span"
                                 style={{ color: "red" }}
                               ></ErrorMessage>
                             </div>
+                              </div>
+                            </div>
+                           
                             <div
                               className="d-flex justify-content-end"
                               style={{ marginTop: "20px" }}

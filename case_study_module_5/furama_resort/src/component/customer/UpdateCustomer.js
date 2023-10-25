@@ -53,6 +53,7 @@ export default function UpdateCustomer() {
     id: customerUpdate.id,
     name: customerUpdate.name,
     birthday: customerUpdate.birthday,
+    phoneNumber:customerUpdate.phoneNumber,
     gender: customerUpdate.gender,
     identityNumber: customerUpdate.identityNumber,
     email: customerUpdate.email,
@@ -112,6 +113,7 @@ export default function UpdateCustomer() {
                               gender: values.gender,
                               identityNumber: values.identityNumber,
                               email: values.email,
+                              phoneNumber: values.phoneNumber,
                               customerType: {
                                 id: +values.customerType,
                               },
@@ -163,6 +165,21 @@ export default function UpdateCustomer() {
                                     <option value={true}>Female</option>
                                   </Field>
                                 </div>
+                                <div className="form-outline">
+                              <label className="form-label" htmlFor="address">
+                                Address
+                              </label>
+                              <Field
+                                className="form-control form-control-lg "
+                                type="text"
+                                id="address"
+                                name="address"
+                              />
+                              <ErrorMessage
+                                name="address"
+                                component="span"
+                              ></ErrorMessage>
+                            </div>
                               </div>
                               <div className="col-md-6 mb-2">
                                 <div className="form-outline ">
@@ -207,23 +224,24 @@ export default function UpdateCustomer() {
                                     ))}
                                   </Field>
                                 </div>
-                              </div>
-                            </div>
-                            <div className="form-outline">
-                              <label className="form-label" htmlFor="address">
-                                Address
+                                <div className="form-outline">
+                              <label className="form-label" >
+                                Phone Number
                               </label>
                               <Field
                                 className="form-control form-control-lg "
                                 type="text"
-                                id="address"
-                                name="address"
+                                id="phoneNumber"
+                                name="phoneNumber"
                               />
                               <ErrorMessage
-                                name="address"
+                                name="phoneNumber"
                                 component="span"
                               ></ErrorMessage>
                             </div>
+                              </div>
+                            </div>
+                    
                             <div
                               className="d-flex justify-content-end"
                               style={{ marginTop: "20px" }}
