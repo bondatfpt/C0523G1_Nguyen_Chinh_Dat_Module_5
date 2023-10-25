@@ -23,7 +23,6 @@ export default function UpdateCustomer() {
   const fetchDataCustomerUpdate = async () => {
     try {
       const response = await findById(id);
-      console.log(response);
       setCustomerUpdate(response);
     } catch (error) {}
   };
@@ -31,15 +30,19 @@ export default function UpdateCustomer() {
   const fetchDataCustomerTypes = async () => {
     try {
       const response = await getCustomerTypes();
-      console.log(customerTypes);
       setCustomerTypes(response);
     } catch (error) {}
   };
 
-  const handleSubmit = (values, id) => {
-    update(values, id);
-    toast.success("Success Updated");
-    navigate("/customers");
+  const handleSubmit = async (values, id) => {
+    const response = await update(values, id);
+    if (response === 200) {
+      toast.success("Success Updated");
+      navigate("/customers");
+    }else{
+      toast.warning("Something wrong here!");
+      navigate("/customers/update/" + id);
+    }
   };
 
   if (!customerUpdate || !customerTypes) {

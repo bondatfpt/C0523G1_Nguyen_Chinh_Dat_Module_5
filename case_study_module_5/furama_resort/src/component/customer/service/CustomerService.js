@@ -2,7 +2,11 @@ import axios from "axios";
 
 export const remove = async (id) => {
   try {
-    await axios.delete("http://localhost:8080/api/customers/" + id);
+    const response = await axios.delete(
+      "http://localhost:8080/api/customers/" + id
+    );
+    console.log(response.status);
+    return response.status;
   } catch (error) {
     console.log(error);
   }
@@ -20,7 +24,12 @@ export const getAll = async () => {
 
 export const update = async (values, id) => {
   try {
-    await axios.put("http://localhost:8080/api/customers/" + id, values);
+    const response = await axios.put(
+      "http://localhost:8080/api/customers/" + id,
+      values
+    );
+    console.log(response.status);
+    return response.status;
   } catch (error) {
     console.log(error);
   }
@@ -52,10 +61,13 @@ export const getCustomerTypes = async () => {
 
 export const create = async (values) => {
   try {
-    await axios.post("http://localhost:8080/api/customers", values);
+    const response = await axios.post(
+      "http://localhost:8080/api/customers",
+      values
+    );
+    console.log(response.status);
+    return response.status;
   } catch (error) {
     console.log(error);
   }
 };
-
-

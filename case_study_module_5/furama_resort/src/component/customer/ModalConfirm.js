@@ -5,11 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 export default function ModalConfirm({ showModal, customer, handleHideModal }) {
   const navigate = useNavigate();
-  const handleDelete = () => {
-    remove(customer.id);
-    handleHideModal();
-    navigate("/customers");
-    toast.success("Success Deleted");
+  const handleDelete = async () => {
+    const response = await remove(customer.id);
+    if (response === 200) {
+      handleHideModal();
+      navigate("/customers");
+      toast.success("Success Deleted");
+    }else{
+      navigate("/customers")
+      toast.warning("Something wrong here!");
+    }
   };
 
   if (!customer) {

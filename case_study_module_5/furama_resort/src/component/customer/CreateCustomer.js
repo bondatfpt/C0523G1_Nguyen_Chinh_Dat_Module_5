@@ -21,9 +21,14 @@ export default function CreateCustomer() {
   }, []);
 
   const handleSubmit = async (values) => {
-    await create(values);
-    toast.success("Success Added");
-    navigate("/customers");
+    const response = await create(values);
+    if (response === 201) {
+      toast.success("Success Added");
+      navigate("/customers");
+    }else{
+      navigate("/customers/new");
+      toast.warning("Something wrong here!");
+    }
   };
 
   if (!customerTypes) {
