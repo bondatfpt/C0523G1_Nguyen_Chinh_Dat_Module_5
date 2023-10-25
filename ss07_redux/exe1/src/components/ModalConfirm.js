@@ -1,7 +1,8 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import { getAll, remove } from "../reduxs/middlewares/UserMiddleware";
-import { useDispatch, useSelector } from "react-redux";
+import {  remove } from "../reduxs/middlewares/UserMiddleware";
+import { useDispatch } from "react-redux";
+
 
 export default function ModalConfirm({ showModal, handleHideModal, idDelete }) {
   console.log(idDelete);
