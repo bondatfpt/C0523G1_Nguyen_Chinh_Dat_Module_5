@@ -13,7 +13,7 @@ export default function Update() {
       setBookUpdate(bookUpdate);
       console.log(bookUpdate);
     });
-  }, []);
+  }, [id]);
   if (!bookUpdate) {
     return null;
   }
@@ -37,7 +37,7 @@ export default function Update() {
         onSubmit={(values) => {
           update(values, id);
           toast.success("Success Updated");
-          navigate("/books");
+          navigate("/");
         }}
       >
         <section className="bg-image">
@@ -84,7 +84,7 @@ export default function Update() {
                             }}
                             id="submitButton"
                             type="submit"
-                          >
+                          >,
                             Done
                           </button>
                         </div>

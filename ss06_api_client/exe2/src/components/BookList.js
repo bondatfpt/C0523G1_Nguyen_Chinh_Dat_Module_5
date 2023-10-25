@@ -4,7 +4,6 @@ import { getAll } from "../service/BookService";
 import { Link } from "react-router-dom";
 import ModalConFirm from "./ModalConFirm";
 import { Modal, Button } from "react-bootstrap";
-import { remove } from "../service/BookService";
 
 
 export default function BookList() {
@@ -21,8 +20,7 @@ export default function BookList() {
     setShowModal(false);
    }
 
-
-  useEffect(() => {
+ useEffect(() => {
     getAll().then((books) => {
       setBooks(books);
     });
@@ -75,7 +73,7 @@ export default function BookList() {
           })}
         </tbody>
       </table>
-      <ModalConFirm showModal={showModal}  handleClose = {handleClose} id = {id} />
+      <ModalConFirm showModal={showModal}  handleClose = {handleClose} id = {id}  />
     </div>
   );
 }

@@ -33,7 +33,7 @@ export default function Create() {
           console.log(values);
           add(values);
           toast.success("Succes Added");
-          navigate("/books");
+          navigate("/");
         }}
         validationSchema={Yup.object(validateObject)}
       >
