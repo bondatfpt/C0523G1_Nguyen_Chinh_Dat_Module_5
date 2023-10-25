@@ -304,5 +304,79 @@
         "Car Loan"
       ]
     }
+  ],
+  "contracts": [
+    {
+      "id": 4,
+      "contractCode": "CT-0004",
+      "deposit": 2500,
+      "startDate": "2023-07-20",
+      "endDate": "2023-08-10",
+      "totalPayment": 1200000
+    },
+    {
+      "id": 5,
+      "contractCode": "CT-0005",
+      "deposit": 4000,
+      "totalPayment": 1500000,
+      "startDate": "2023-08-27",
+      "endDate": "2023-12-10"
+    },
+    {
+      "id": 6,
+      "contractCode": "CT-0006",
+      "deposit": 3000,
+      "startDate": "2023-09-20",
+      "endDate": "2023-10-10",
+      "totalPayment": 1000000
+    },
+    {
+      "contractCode": "CT-0007",
+      "deposit": 1000,
+      "totalPayment": 200000,
+      "startDate": "2023-10-13",
+      "endDate": "2023-10-28",
+      "id": 7
+    },
+    {
+      "contractCode": "CT-0008",
+      "deposit": 10000,
+      "totalPayment": 3000000,
+      "startDate": "2023-10-05",
+      "endDate": "2023-10-06",
+      "id": 8
+    },
+    {
+      "contractCode": "CT-0009",
+      "deposit": 5000,
+      "totalPayment": 600000,
+      "startDate": "2023-10-12",
+      "endDate": "2023-10-28",
+      "id": 9
+    },
+    {
+      "contractCode": "CT-0010",
+      "deposit": 5000,
+      "totalPayment": 110000,
+      "startDate": "2023-10-05",
+      "endDate": "2023-10-22",
+      "id": 10
+    },
+    {
+      "contractCode": "CT-0011",
+      "deposit": 5000,
+      "totalPayment": 600000,
+      "startDate": "2023-10-03",
+      "endDate": "2023-10-29",
+      "id": 11
+    },
+    {
+      "contractCode": "CT-0012",
+      "deposit": 500,
+      "totalPayment": 100000,
+      "startDate": "2023-10-05",
+      "endDate": "2023-10-22",
+      "id": 12
+    }
   ]
 }

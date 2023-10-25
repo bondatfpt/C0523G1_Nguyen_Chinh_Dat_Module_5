@@ -16,6 +16,8 @@ import UpdateHouse from "./component/facilities/UpdateHouse";
 import UpdateRoom from "./component/facilities/UpdateRoom";
 import CreateCustomer from "./component/customer/CreateCustomer";
 import UpdateCustomer from "./component/customer/UpdateCustomer";
+import ContractCreate from "./component/contract/ContractCreate";
+import ContractUpdate from "./component/contract/ContractUpdate";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/customers/new" element={<CreateCustomer />} />
         <Route path="/customers/update/:id" element={<UpdateCustomer />} />
         <Route path="/contracts" element={<Contract />} />
+        <Route path="/contracts/update/:id" element={<ContractUpdate />} />
+        <Route path="/contracts/new" element={<ContractCreate />} />
         <Route path="/villa/new" element={<CreateVilla />} />
         <Route path="/house/new" element={<CreateHouse />} />
         <Route path="/room/new" element={<CreateRoom />} />
