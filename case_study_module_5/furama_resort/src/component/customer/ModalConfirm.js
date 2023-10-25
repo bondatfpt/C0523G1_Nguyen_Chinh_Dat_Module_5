@@ -3,13 +3,19 @@ import { Modal, Button } from "react-bootstrap";
 import { remove } from "./service/CustomerService";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-export default function ModalConfirm({ showModal, customer, handleHideModal }) {
+import { getAll } from "./service/CustomerService";
+export default function ModalConfirm({ showModal, customer, handleHideModal ,setCustomerList}) {
   const navigate = useNavigate();
+  const getAllCustomer = async () => {
+    const customerList = await getAll();
+    setCustomerList(customerList);
+  }
   const handleDelete = async () => {
     const response = await remove(customer.id);
     if (response === 200) {
       handleHideModal();
       navigate("/customers");
+      getAllCustomer();
       toast.success("Success Deleted");
     }else{
       navigate("/customers")
@@ -27,7 +33,7 @@ export default function ModalConfirm({ showModal, customer, handleHideModal }) {
         <Modal.Header>
           <Modal.Title>Delete Confirm</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body style={{color:"red"}}>
           {" "}
           Are you sure to delete this customer have name: {customer.name} ?{" "}
         </Modal.Body>

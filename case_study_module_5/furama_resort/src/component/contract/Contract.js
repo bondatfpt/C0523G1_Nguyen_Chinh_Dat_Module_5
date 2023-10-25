@@ -12,6 +12,7 @@ export default function Contract() {
   const handleShowModal = (contract) =>{
     setShowModal(true);
     setContractDelete(contract);
+    console.log("COntractDelete sau khi bật lên modal" + contract.contractCode);
   }
   const handleHideModal = () =>{
     setShowModal(false);
@@ -142,7 +143,7 @@ export default function Contract() {
             </div>
           </div>
         </div>
-        <ModalConfirm showModal={showModal} handleHideModal={handleHideModal} contractDelete={contractDelete}/>
+        <ModalConfirm showModal={showModal} handleHideModal={handleHideModal} contractDelete={contractDelete} setContractList={setContractList}/>
       </div>
     </div>
   );

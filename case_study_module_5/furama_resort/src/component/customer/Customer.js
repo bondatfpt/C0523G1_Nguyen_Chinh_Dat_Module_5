@@ -157,7 +157,7 @@ export default function Customer() {
               showModal={showModal}
               handleHideModal={handleHideModal}
               customer={customer}
-
+              setCustomerList={setCustomerList}
             />
           </div>
         </div>
