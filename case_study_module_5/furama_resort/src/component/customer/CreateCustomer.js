@@ -1,11 +1,13 @@
 import React from "react";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import {toast} from "react-toastify";
 
 export default function CreateCustomer() {
+  const navigate = useNavigate();
   const [customerTypes, setCustomerTypes] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -55,6 +57,8 @@ export default function CreateCustomer() {
       values.customerType = selectedType;
       console.log(values);
       handleSubmit(values);
+        navigate ("/customers");
+      toast.success("Success Created");
     },
   });
 

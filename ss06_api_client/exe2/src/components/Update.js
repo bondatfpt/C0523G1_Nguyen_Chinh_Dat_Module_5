@@ -14,6 +14,12 @@ export default function Update() {
       console.log(bookUpdate);
     });
   }, [id]);
+
+  const handleSubmit = (values,id) => {
+    update(values,id);
+    toast.success("Success Updated");
+    navigate("/");
+  }
   if (!bookUpdate) {
     return null;
   }
@@ -35,9 +41,7 @@ export default function Update() {
       <Formik
         initialValues={initValue}
         onSubmit={(values) => {
-          update(values, id);
-          toast.success("Success Updated");
-          navigate("/");
+         handleSubmit(values,id);
         }}
       >
         <section className="bg-image">
@@ -84,7 +88,7 @@ export default function Update() {
                             }}
                             id="submitButton"
                             type="submit"
-                          >,
+                          >
                             Done
                           </button>
                         </div>

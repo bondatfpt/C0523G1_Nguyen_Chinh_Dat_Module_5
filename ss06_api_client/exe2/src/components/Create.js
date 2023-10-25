@@ -8,6 +8,11 @@ import { toast } from "react-toastify";
 
 export default function Create() {
   const navigate = useNavigate();
+  const handleSubmit = (values) => {
+    add(values);
+    toast.success("Success Added");
+    navigate("/");
+  }
   const initValue = {
     title: "",
     quantity: "",
@@ -30,10 +35,7 @@ export default function Create() {
       <Formik
         initialValues={initValue}
         onSubmit={(values) => {
-          console.log(values);
-          add(values);
-          toast.success("Succes Added");
-          navigate("/");
+          handleSubmit(values);
         }}
         validationSchema={Yup.object(validateObject)}
       >

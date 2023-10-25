@@ -5,15 +5,30 @@ import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./Customer.css";
+import ModalConfirm from "./ModalConfirm";
 
 export default function Customer() {
   const [customerList, setCustomerList] = useState([]);
+  const [showModal, setShowModal] = useState (false);
+  const [customer, setCustomer] = useState ();
+  const [isDeleted, setIsDeleted] = useState(false);
+
+  const handleShowModal = (customer) => {
+    setShowModal(true);
+    setCustomer(customer);
+  }
+  console.log(showModal);
+  const handleHideModal = () => {
+    setShowModal(false);
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
           "http://localhost:8080/api/customers/"
         );
+        console.log(response.data);
         setCustomerList(response.data);
       } catch (error) {}
     };
@@ -109,6 +124,7 @@ export default function Customer() {
                               </div>
                               <div className="col-md-6 btn-edit-delete">
                                 <button
+                                  onClick={()=> handleShowModal(customer)}
                                   className="Btn-delete"
                                   style={{ textAlign: "center" }}
                                 >
@@ -135,6 +151,7 @@ export default function Customer() {
                 })}
               </tbody>
             </table>
+            <ModalConfirm showModal={showModal} setShowModal={setShowModal} customer = {customer} setIsDeleted = {setIsDeleted} isDeleted = {isDeleted}/>
           </div>
         </div>
       </div>

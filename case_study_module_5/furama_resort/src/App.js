@@ -14,7 +14,7 @@ import CreateRoom from "./component/facilities/CreateRoom";
 import UpdateVilla from "./component/facilities/UpdateVilla";
 import UpdateHouse from "./component/facilities/UpdateHouse";
 import UpdateRoom from "./component/facilities/UpdateRoom";
-import CreateCustomer from "./component/customer/CreateCustomer"
+import CreateCustomer from "./component/customer/CreateCustomer";
 import UpdateCustomer from "./component/customer/UpdateCustomer";
 
 function App() {
@@ -24,8 +24,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Facilities />} />
         <Route path="/customers" element={<Customer />} />
-        <Route path="/customers/new" element={<CreateCustomer/>} />
-        <Route path="/customers/update/:id" element={<UpdateCustomer/>} />
+        <Route path="/customers/new" element={<CreateCustomer />} />
+        <Route path="/customers/update/:id" element={<UpdateCustomer />} />
         <Route path="/contracts" element={<Contract />} />
         <Route path="/villa/new" element={<CreateVilla />} />
         <Route path="/house/new" element={<CreateHouse />} />

@@ -5,25 +5,29 @@ import { Link } from "react-router-dom";
 import ModalConFirm from "./ModalConFirm";
 import { Modal, Button } from "react-bootstrap";
 
-
 export default function BookList() {
   const [showModal, setShowModal] = useState(false);
   const [books, setBooks] = useState();
-  const [id, setId] = useState ();
+  const [id, setId] = useState();
+
+  const fetchData = async () => {
+    try {
+      const books = await getAll();
+      setBooks(books);
+    } catch (error) {}
+  };
 
   const handleShow = async (id) => {
     setShowModal(true);
     setId(id);
   };
-  
-   const handleClose = () =>{
-    setShowModal(false);
-   }
 
- useEffect(() => {
-    getAll().then((books) => {
-      setBooks(books);
-    });
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   if (!books) {
@@ -64,7 +68,7 @@ export default function BookList() {
                 </td>
                 <td>
                   {" "}
-                  <Button variant="danger" onClick={() => handleShow(item.id)}  >
+                  <Button variant="danger" onClick={() => handleShow(item.id)}>
                     Delete
                   </Button>
                 </td>
@@ -73,7 +77,7 @@ export default function BookList() {
           })}
         </tbody>
       </table>
-      <ModalConFirm showModal={showModal}  handleClose = {handleClose} id = {id}  />
+      <ModalConFirm showModal={showModal} handleClose={handleClose} id={id} />
     </div>
   );
 }

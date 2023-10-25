@@ -2,17 +2,25 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { getAll, add } from "../../src/service/TodoListService";
 import { Formik, Form, Field } from "formik";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 export default function TodoList() {
   const [todoList, setTodoList] = useState();
-  useEffect(() => {
-    getAll().then((todoList) => {
-      setTodoList(todoList);
-    });
-  }, []);
-  console.log(todoList);
 
+  const fetchData = async () => {
+    try {
+      const todoList = await getAll();
+      setTodoList(todoList);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const handleFormSubmit = (values) => {
+    add(values);
+    toast.success("Succes added");
+  };
   if (!todoList) {
     return null;
   }
@@ -22,16 +30,12 @@ export default function TodoList() {
 
   return (
     <div>
-      <Formik 
-      initialValues={initValue} 
-      onSubmit={(values) => {
-        console.log(values);
-        add (values);
-        toast.success("Succes added")
-        getAll().then((todoList) => {
-          setTodoList(todoList);
-        });
-      }}
+      <Formik
+        initialValues={initValue}
+        onSubmit={(values) => {
+          handleFormSubmit(values);
+          fetchData();
+        }}
       >
         <section className="bg-image">
           <div className="mask d-flex align-items-center gradient-custom-3">
@@ -76,8 +80,7 @@ export default function TodoList() {
                       </Form>
                       <ul>
                         {todoList.map((item) => {
-                          return <li key={item.id}>{item.title}</li>
-                          ;
+                          return <li key={item.id}>{item.title}</li>;
                         })}
                       </ul>
                     </div>

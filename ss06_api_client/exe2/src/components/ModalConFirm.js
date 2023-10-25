@@ -1,17 +1,16 @@
 import React from "react";
 import {Modal,Button} from "react-bootstrap";
-import { getAll, remove } from "../service/BookService";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import {toast} from "react-toastify";
-export default function ModalConFirm ({ showModal, handleClose, id,getAll}) {
-  const [books, setBooks] = useState();
+import { remove } from "../service/BookService";
+
+export default function ModalConFirm ({ showModal, handleClose, id}) {
   const navigate = useNavigate ();
   const handleDelete = () => {
   const response =  remove(id);
     console.log(response);
     handleClose();
-    getAll();
+    navigate("/");
     toast.success("Success Deleted")
 }
   return (
