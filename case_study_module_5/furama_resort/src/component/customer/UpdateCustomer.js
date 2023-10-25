@@ -67,8 +67,9 @@ export default function UpdateCustomer() {
     identityNumber: Yup.string()
       .required()
       .matches(/^[0-9]{10,12}$/, "Invalid IdentityNumber!"),
-
+    phoneNumber: Yup.string().required().matches(/^[84|0][0-9]{9,}$/,"Invalid phone number!"),
     address: Yup.string().required(),
+    email: Yup.string().required().email("Invalid email !")
   };
 
   return (
@@ -138,6 +139,7 @@ export default function UpdateCustomer() {
                                   <ErrorMessage
                                     name="name"
                                     component="span"
+                                    style={{color:"red"}}
                                   ></ErrorMessage>
                                 </div>
                                 <div className="form-outline ">
@@ -152,6 +154,7 @@ export default function UpdateCustomer() {
                                   <ErrorMessage
                                     name="birthday"
                                     component="span"
+                                    style={{color:"red"}}
                                   ></ErrorMessage>
                                 </div>
                                 <div className="form-outline ">
@@ -178,6 +181,7 @@ export default function UpdateCustomer() {
                               <ErrorMessage
                                 name="address"
                                 component="span"
+                                style={{color:"red"}}
                               ></ErrorMessage>
                             </div>
                               </div>
@@ -194,6 +198,7 @@ export default function UpdateCustomer() {
                                   <ErrorMessage
                                     name="identityNumber"
                                     component="span"
+                                    style={{color:"red"}}
                                   ></ErrorMessage>
                                 </div>
                                 <div className="form-outline">
@@ -201,11 +206,12 @@ export default function UpdateCustomer() {
                                   <Field
                                     name="email"
                                     className="form-control form-control-lg "
-                                    type="email"
+                                    type="text"
                                   />
                                   <ErrorMessage
                                     name="email"
                                     component="span"
+                                    style={{color:"red"}}
                                   ></ErrorMessage>
                                 </div>
                                 <div className="form-outline">
@@ -237,6 +243,7 @@ export default function UpdateCustomer() {
                               <ErrorMessage
                                 name="phoneNumber"
                                 component="span"
+                                style={{color:"red"}}
                               ></ErrorMessage>
                             </div>
                               </div>

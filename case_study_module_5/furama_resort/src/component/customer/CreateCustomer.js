@@ -46,12 +46,13 @@ export default function CreateCustomer() {
     address: "",
   };
   const validateCustomer = {
-    name: Yup.string().required(),
+    name: Yup.string().required().matches(/^[A-Za-z]\\s[A-Za-z]\\s[A-Za-z]$/,"Invalid name"),
     birthday: Yup.string().required(),
     identityNumber: Yup.string()
       .required()
       .matches(/^[0-9]{10,12}$/, "Invalid IdentityNumber!"),
     email: Yup.string().required().email("Invalid email!"),
+    phoneNumber: Yup.string().required().matches(/^[84|0][0-9]{9,}$/,"Invalid phone number!"),
     address: Yup.string().required(),
   };
 
