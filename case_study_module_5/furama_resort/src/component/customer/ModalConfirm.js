@@ -1,19 +1,9 @@
 import React from "react";
-import {
-  Modal,
-  Button,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { remove } from "./service/CustomerService";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-export default function ModalConfirm({
-  showModal,
-  customer,
-  handleHideModal
-}) {
+export default function ModalConfirm({ showModal, customer, handleHideModal }) {
   const navigate = useNavigate();
   const handleDelete = () => {
     remove(customer.id);
@@ -22,15 +12,22 @@ export default function ModalConfirm({
     toast.success("Success Deleted");
   };
 
+  if (!customer) {
+    return null;
+  }
+
   return (
     <div>
       <Modal show={showModal} animation={false}>
         <Modal.Header>
           <Modal.Title>Delete Confirm</Modal.Title>
         </Modal.Header>
-        <Modal.Body> Are you sure to delete this customer ? </Modal.Body>
+        <Modal.Body>
+          {" "}
+          Are you sure to delete this customer have name: {customer.name} ?{" "}
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary"onClick={handleHideModal}>
+          <Button variant="primary" onClick={handleHideModal}>
             Close
           </Button>
           <Button variant="danger" onClick={handleDelete}>
