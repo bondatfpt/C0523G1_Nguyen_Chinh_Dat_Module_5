@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { update, findById, getCustomerTypes } from "./service/CustomerService";
+import { handleCheckEmail,handleCheckIdentityNumber,handleCheckPhoneNumber } from "./service/CustomerService";
 
 export default function UpdateCustomer() {
   const navigate = useNavigate();
@@ -35,14 +36,26 @@ export default function UpdateCustomer() {
   };
 
   const handleSubmit = async (values, id) => {
-    const response = await update(values, id);
-    if (response === 200) {
-      toast.success("Success Updated");
+   const checkPhoneNumber = await handleCheckPhoneNumber(values.phoneNumber, id);
+   const checkIdentityNumber = await handleCheckIdentityNumber(values.identityNumber,id);
+   const checkEmail = await handleCheckEmail(values.email,id);
+   if (checkPhoneNumber && checkEmail && checkIdentityNumber){
+    const response = await update (values,id);
+    console.log(response);
+    if (response == 200){
       navigate("/customers");
+      toast.success("Success updated customer have name: " + values.name);
     }else{
-      toast.warning("Something wrong here!");
-      navigate("/customers/update/" + id);
+      toast.warning("Something erorr here");
     }
+   }else if (!checkPhoneNumber) {
+    toast.warning("Duplicate phone number");
+   }
+   else if (!checkIdentityNumber) {
+    toast.warning("Duplicate identity number");
+   }else if (!checkEmail) {
+    toast.warning("Duplicate email");
+   }
   };
 
   if (!customerUpdate || !customerTypes) {

@@ -11,7 +11,7 @@ export const getAll = async() =>{
 export const remove = async(id) =>{
     try {
         const respone = await axios.delete("http://localhost:3001/users/" + id);
-        return respone.status;
+        return respone;
     } catch (error) {
         console.log(error);
     }

@@ -3,7 +3,6 @@ import axios from "axios";
 export const getAll = async () => {
 try {
     const response = await axios.get("http://localhost:3001/contracts");
-    console.log(response.data);
     return response.data;
 } catch (error) {
     console.log(error);
@@ -13,7 +12,6 @@ try {
 export const create = async (values) => {
     try {
         const response = await axios.post ("http://localhost:3001/contracts",values);
-        console.log(response.status);
         return response.status;
     } catch (error) {
         console.log(error);

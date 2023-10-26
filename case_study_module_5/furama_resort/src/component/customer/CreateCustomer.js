@@ -5,10 +5,13 @@ import * as Yup from "yup";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { create, getCustomerTypes } from "./service/CustomerService";
+import { handleCheckPhoneNumber,handleCheckEmail,handleCheckIdentityNumber} from "./service/CustomerService";
 
 export default function CreateCustomer() {
   const navigate = useNavigate();
   const [customerTypes, setCustomerTypes] = useState([]);
+
+
   const fetchData = async () => {
     console.log("useEffect customer type run");
     try {
@@ -21,13 +24,28 @@ export default function CreateCustomer() {
   }, []);
 
   const handleSubmit = async (values) => {
-    const response = await create(values);
-    if (response === 201) {
-      toast.success("Success Added");
-      navigate("/customers");
-    }else{
+    const checkPhoneNumber = await handleCheckPhoneNumber (values.phoneNumber);
+    const checkIdentityNumber = await handleCheckIdentityNumber (values.identityNumber);
+    const checkEmail = await handleCheckEmail (values.email);
+    if (checkPhoneNumber && checkIdentityNumber && checkEmail){
+      const response = await create (values);
+      console.log(response);
+      if (response == 201){
+          navigate("/customers");
+          toast.success("Success Created");
+      }else{
+        navigate("/customers/new");
+        toast.success("Something wrong here!");
+      }
+    }else if (!checkPhoneNumber){
       navigate("/customers/new");
-      toast.warning("Something wrong here!");
+        toast.warning("Duplicate phone number!");
+    }else if (!checkIdentityNumber){
+      navigate("/customers/new");
+        toast.warning("Duplicate identity number!");
+    }else if (!checkEmail){
+      navigate("/customers/new");
+        toast.warning("Duplicate email!");
     }
   };
 
@@ -46,7 +64,7 @@ export default function CreateCustomer() {
     address: "",
   };
   const validateCustomer = {
-    name: Yup.string().required().matches(/^[A-Za-z]\\s[A-Za-z]\\s[A-Za-z]$/,"Invalid name"),
+    name: Yup.string().required(),
     birthday: Yup.string().required(),
     identityNumber: Yup.string()
       .required()

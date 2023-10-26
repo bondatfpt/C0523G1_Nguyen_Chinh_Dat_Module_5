@@ -307,12 +307,52 @@
   ],
   "contracts": [
     {
+      "id": 1,
       "contractCode": "CT-0001",
       "deposit": 5000,
-      "totalPayment": 50000000,
-      "startDate": "2023-10-10",
-      "endDate": "2023-10-21",
-      "id": 1
+      "totalPayment": 50000,
+      "startDate": "2023-10-14",
+      "endDate": "2023-10-21"
+    },
+    {
+      "contractCode": "CT-0003",
+      "deposit": 5000,
+      "totalPayment": 50000,
+      "startDate": "2023-10-12",
+      "endDate": "2023-10-29",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "contractCode": "CT-0002",
+      "deposit": 500,
+      "totalPayment": 1000,
+      "startDate": "2023-10-18",
+      "endDate": "2023-11-05"
+    },
+    {
+      "contractCode": "CT-0008",
+      "deposit": 500,
+      "totalPayment": 50000,
+      "startDate": "2023-10-19",
+      "endDate": "2023-10-29",
+      "id": 4
+    },
+    {
+      "contractCode": "CT-0005",
+      "deposit": 5000,
+      "totalPayment": 50000,
+      "startDate": "2023-10-11",
+      "endDate": "2023-10-29",
+      "id": 6
+    },
+    {
+      "contractCode": "CT-0099",
+      "deposit": 500,
+      "totalPayment": 5000,
+      "startDate": "2023-10-09",
+      "endDate": "2023-10-29",
+      "id": 11
     }
   ]
 }

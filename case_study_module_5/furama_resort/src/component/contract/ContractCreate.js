@@ -5,18 +5,37 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { create } from "./service/ContractService";
 import { useNavigate } from "react-router-dom";
+import { getAll } from "./service/ContractService";
+
 export default function ContractCreate() {
   const navigate = useNavigate();
-
-  const handleSubmit =async (values) => {
-    const response = await create(values);
-    console.log(response);
-    if (response === 201) {
-      toast.success("Success Created");
-      navigate("/contracts");
+  const handleCheckContractCode = async (contractCode) => {
+    const contractList = await getAll();
+    const contract = contractList.find(
+      (contract) => contract.contractCode == contractCode
+    );
+    if (!contract) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  const handleSubmit = async (values) => {
+    const checkContractCode = await handleCheckContractCode(
+      values.contractCode
+    );
+    if (checkContractCode) {
+      const response = await create(values);
+      if (response == 201) {
+        toast.success("Success Created");
+        navigate("/contracts");
+      } else {
+        navigate("/contracts/new");
+        toast.warn("Something wrong here !");
+      }
     } else {
       navigate("/contracts/new");
-      toast.warn("Something wrong here !");
+      toast.warn("Duplicate contract code !");
     }
   };
 
@@ -32,13 +51,13 @@ export default function ContractCreate() {
     contractCode: Yup.string()
       .required()
       .matches(/^CT-[0-9]{4}$/, "Contract code must be CT-XXXX"),
-    deposit: Yup.number().max(
+    deposit: Yup.number().required().lessThan(
       Yup.ref("totalPayment"),
       "Deposit must be less than total payment!"
     ),
     totalPayment: Yup.number()
       .required()
-      .min(Yup.ref("deposit"), "Total payment must be greater than deposit!")
+      .moreThan(Yup.ref("deposit"), "Total payment must be greater than deposit!")
       .positive("Total payment must be a positive number !"),
     startDate: Yup.string().required(),
     endDate: Yup.string()
@@ -70,7 +89,7 @@ export default function ContractCreate() {
         <Formik
           initialValues={initValue}
           validationSchema={Yup.object(validateContract)}
-          onSubmit={(values)=>{
+          onSubmit={(values) => {
             handleSubmit(values);
           }}
         >

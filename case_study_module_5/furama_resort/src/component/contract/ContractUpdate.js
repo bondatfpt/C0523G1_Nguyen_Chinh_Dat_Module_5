@@ -5,14 +5,12 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { update, findById } from "./service/ContractService";
 import { useNavigate } from "react-router-dom";
-
-
+import { getAll } from "./service/ContractService";
 
 export default function ContractUpdate() {
   const [contractUpdate, setContractUpdate] = useState();
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log(id);
   const fetchData = async () => {
     const contractUpdate = await findById(id);
     setContractUpdate(contractUpdate);
@@ -26,17 +24,33 @@ export default function ContractUpdate() {
     return null;
   }
 
-    const handleSubmit = async (values, id) => {
+  const handleCheckContractCode = async (contractCode, id) => {
+    const contractList = await getAll();
+    const contract = contractList.find(
+      (contract) => contract.contractCode === contractCode && contract.id != id
+    );
+    if (!contract) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  const handleSubmit = async (values, id) => {
+    const checkContractCode = await handleCheckContractCode(
+      values.contractCode, values.id
+    );
+    if (checkContractCode) {
       const response = await update(values, id);
-      console.log(response);
-      if (response === 200) {
+      if (response == 200) {
         toast.success("Success Updated");
         navigate("/contracts");
       } else {
-        navigate("/contracts/new");
         toast.warn("Something wrong here !");
       }
-    };
+    } else {
+      toast.warn("Duplicate contract code !");
+    }
+  };
 
   const initValue = {
     id: contractUpdate.id,
@@ -89,9 +103,9 @@ export default function ContractUpdate() {
         <Formik
           initialValues={initValue}
           validationSchema={Yup.object(validateContract)}
-            onSubmit={(values)=>{
-                handleSubmit(values,id);
-            }}
+          onSubmit={(values) => {
+            handleSubmit(values, id);
+          }}
         >
           <div
             className="our_room"

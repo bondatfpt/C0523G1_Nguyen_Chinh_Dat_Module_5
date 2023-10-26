@@ -71,3 +71,34 @@ export const create = async (values) => {
     console.log(error);
   }
 };
+
+export const handleCheckPhoneNumber = async (phoneNumber,id) => {
+  const customers = await getAll();
+  const customer = customers.find(customer => customer.phoneNumber == phoneNumber && customer.id != id);
+  if (!customer){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+export const handleCheckIdentityNumber = async (identityNumber,id) => {
+  const customers = await getAll();
+  const customer = customers.find(customer => customer.identityNumber == identityNumber && customer.id != id);
+  if (!customer){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+export const handleCheckEmail = async (email,id) => {
+  const customers = await getAll();
+  const customer = customers.find(customer => customer.email == email && customer.id != id);
+  if (!customer){
+    return true;
+  }else{
+    return false;
+  }
+}
+
