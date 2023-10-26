@@ -32,7 +32,7 @@ public class CustomerService implements ICustomerService{
     }
 
     @Override
-    public List<Customer> getCustomerByCustomerTypeId(Integer customerTypeId) {
-        return iCustomerRepository.getCustomerByCustomerType_Id(customerTypeId);
+    public List<Customer> findCustomerByCustomerTypeNameContaining(String customerTypeName) {
+        return iCustomerRepository.findCustomerByCustomerTypeNameContaining(customerTypeName);
     }
 }

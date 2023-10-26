@@ -13,5 +13,5 @@ public interface ICustomerService {
 
     Customer findById (Integer id);
 
-    List<Customer> getCustomerByCustomerTypeId (Integer customerTypeId);
+    List<Customer> findCustomerByCustomerTypeNameContaining(String customerTypeName);
 }

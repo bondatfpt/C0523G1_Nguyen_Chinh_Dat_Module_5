@@ -57,9 +57,9 @@ public class RestCustomer {
         return ResponseEntity.ok("Success delete");
     }
 
-    @GetMapping ("/customer-type/{id}")
-    public ResponseEntity<List<Customer>> getCustomerByCustomerTypeId (@PathVariable Integer id) {
-        List <Customer> customerList = iCustomerService.getCustomerByCustomerTypeId(id);
+    @GetMapping ("/customer-type/{name}")
+    public ResponseEntity<List<Customer>> getCustomerByCustomerTypeName (@PathVariable String name) {
+        List <Customer> customerList = iCustomerService.findCustomerByCustomerTypeNameContaining(name);
         if (customerList.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }else {

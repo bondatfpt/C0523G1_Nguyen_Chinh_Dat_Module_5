@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
-    List<Customer> getCustomerByCustomerType_Id (Integer customerType);
+    List<Customer> findCustomerByCustomerTypeNameContaining(String customerTypeName);
 }
