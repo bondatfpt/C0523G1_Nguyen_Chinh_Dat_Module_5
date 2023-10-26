@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -21,11 +23,11 @@ public class RestCustomer {
     @GetMapping("/")
     public ResponseEntity<List<Customer>> showList() {
         List<Customer> customers = iCustomerService.findAll();
+        customers.sort(Comparator.comparingLong(Customer::getId).reversed());
         if (customers.isEmpty()) {
-
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }else {
-            return new ResponseEntity<>(customers,HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(customers, HttpStatus.OK);
         }
     }
 
@@ -60,6 +62,17 @@ public class RestCustomer {
     @GetMapping ("/customer-type/{name}")
     public ResponseEntity<List<Customer>> getCustomerByCustomerTypeName (@PathVariable String name) {
         List <Customer> customerList = iCustomerService.findCustomerByCustomerTypeNameContaining(name);
+        if (customerList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else {
+            return  new ResponseEntity<>(customerList,HttpStatus.OK);
+        }
+    }
+
+    @GetMapping ("/search/{name}")
+    public ResponseEntity<List<Customer>> getCustomersByName (@PathVariable String name) {
+        name = "%" + name + "%";
+         List <Customer> customerList = iCustomerService.findCustomersByNameContaining(name);
         if (customerList.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }else {

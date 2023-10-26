@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.model.Customer;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface ICustomerService {
     Customer findById (Integer id);
 
     List<Customer> findCustomerByCustomerTypeNameContaining(String customerTypeName);
+    List<Customer> findCustomersByNameContaining( String keyword);
+
 }

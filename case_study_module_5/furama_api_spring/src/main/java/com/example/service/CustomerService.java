@@ -35,4 +35,9 @@ public class CustomerService implements ICustomerService{
     public List<Customer> findCustomerByCustomerTypeNameContaining(String customerTypeName) {
         return iCustomerRepository.findCustomerByCustomerTypeNameContaining(customerTypeName);
     }
+
+    @Override
+    public List<Customer> findCustomersByNameContaining(String keyword) {
+        return iCustomerRepository.findCustomersByNameContaining(keyword);
+    }
 }

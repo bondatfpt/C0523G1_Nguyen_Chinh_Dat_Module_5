@@ -8,7 +8,8 @@ import ModalConfirm from "./ModalConfirm";
 import {
   getAll,
   getCustomerTypes,
-  getCustomersByCustomerTypeId,
+  getCustomersByCustomerTypeName,
+  getCustomersByName,
 } from "./service/CustomerService";
 import { toast } from "react-toastify";
 
@@ -18,6 +19,7 @@ export default function Customer() {
   const [customer, setCustomer] = useState();
   const [customerTypes, setCustomerTypes] = useState([]);
   const [customerTypeName, setCustomerTypeName] = useState("-");
+  const [nameSearch, setNameSearch] = useState("");
   const fetchData = async () => {
     try {
       const customerList = await getAll();
@@ -31,9 +33,8 @@ export default function Customer() {
   useEffect(() => {
     const fetchCustomerTypes = async () => {
       try {
-        const response = await getCustomersByCustomerTypeId(
-          customerTypeName);
-        
+        const response = await getCustomersByCustomerTypeName(customerTypeName);
+
         console.log(response.status);
         if (response.status == 200) {
           setCustomerList(response.data);
@@ -41,11 +42,28 @@ export default function Customer() {
           toast.warning("Not found!");
         }
       } catch (error) {
-        toast.warning("Not Found!")
+        toast.warning("Not Found!");
       }
     };
     fetchCustomerTypes();
   }, [customerTypeName]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getCustomersByName( nameSearch);
+
+        console.log(response.status);
+        if (response.status == 200) {
+          setCustomerList(response.data);
+        } else {
+          toast.warning("Not found!");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [nameSearch]);
 
   const handleShowModal = (customer) => {
     setShowModal(true);
@@ -107,14 +125,14 @@ export default function Customer() {
                       data-trigger
                       name="choices-single-defaul"
                       onChange={(event) => {
-                        setCustomerTypeName((event.target.value));
+                        setCustomerTypeName(event.target.value);
                       }}
                     >
-                      <option value= "-">All</option>
+                      <option value="-">All</option>
                       {customerTypes.map((item) => {
                         return (
                           <option key={item.id} value={item.name}>
-                            {item.name}
+                            {item.name.substring(1)}
                           </option>
                         );
                       })}
@@ -122,7 +140,14 @@ export default function Customer() {
                   </div>
                 </div>
                 <div className="input-field second-wrap">
-                  <input id="search" type="text" placeholder="Enter a name?" />
+                  <input
+                    id="search"
+                    onChange={(event) => {
+                      setNameSearch(event.target.value);
+                    }}
+                    type="text"
+                    placeholder="Enter a customer name?"
+                  />
                 </div>
                 <div className="input-field third-wrap">
                   <button className="btn-search" type="button">
@@ -187,7 +212,7 @@ export default function Customer() {
                       <td>{customer.gender ? "Female" : "Male"}</td>
                       <td>{customer.identityNumber}</td>
                       <td>{customer.email}</td>
-                      <td>{customer.customerType.name}</td>
+                      <td>{customer.customerType.name.substring(1)}</td>
                       <td>{customer.address}</td>
                       <td>
                         <div className="row">

@@ -247,7 +247,7 @@ export default function UpdateCustomer() {
                                   >
                                     {customerTypes.map((type) => (
                                       <option key={type.id} value={type.id}>
-                                        {type.name}
+                                        {type.name.substring(1)}
                                       </option>
                                     ))}
                                   </Field>

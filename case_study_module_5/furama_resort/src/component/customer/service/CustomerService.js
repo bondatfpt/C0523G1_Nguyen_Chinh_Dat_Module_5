@@ -101,10 +101,23 @@ export const handleCheckEmail = async (email,id) => {
     return false;
   }
 }
-export const getCustomersByCustomerTypeId = async (name) => {
+export const getCustomersByCustomerTypeName = async (name) => {
   try {
     const response = await axios.get(
       "http://localhost:8080/api/customers/customer-type/" + name
+    );
+    console.log(response.data);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+export const getCustomersByName = async (name) => {
+  try {
+    const response = await axios.get(
+      "http://localhost:8080/api/customers/search/" + name
     );
     console.log(response.data);
     return response;
