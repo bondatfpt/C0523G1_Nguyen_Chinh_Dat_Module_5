@@ -76,7 +76,16 @@ export default function UpdateCustomer() {
 
   const validateCustomer = {
     name: Yup.string().required(),
-    birthday: Yup.string().required(),
+    birthday: Yup.string().required().test("age-check","18<= age <= 100!", function(value){
+      const today = new Date();
+      const birthday = new Date(value);
+      const age = today.getFullYear() - birthday.getFullYear();
+      if (age >= 18 && age <= 100 ){
+        return true;
+      }else{
+        return false;
+      }
+    }),
     identityNumber: Yup.string()
       .required()
       .matches(/^[0-9]{10,12}$/, "Invalid IdentityNumber!"),

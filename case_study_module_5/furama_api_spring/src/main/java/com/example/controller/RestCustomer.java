@@ -22,6 +22,7 @@ public class RestCustomer {
     public ResponseEntity<List<Customer>> showList() {
         List<Customer> customers = iCustomerService.findAll();
         if (customers.isEmpty()) {
+
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }else {
             return new ResponseEntity<>(customers,HttpStatus.OK);
@@ -54,5 +55,15 @@ public class RestCustomer {
     public ResponseEntity<String> delete (@PathVariable Integer id){
         iCustomerService.delete(id);
         return ResponseEntity.ok("Success delete");
+    }
+
+    @GetMapping ("/customer-type/{id}")
+    public ResponseEntity<List<Customer>> getCustomerByCustomerTypeId (@PathVariable Integer id) {
+        List <Customer> customerList = iCustomerService.getCustomerByCustomerTypeId(id);
+        if (customerList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else {
+            return  new ResponseEntity<>(customerList,HttpStatus.OK);
+        }
     }
 }

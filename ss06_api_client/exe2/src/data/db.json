@@ -15,5 +15,55 @@
       "quantity": 100,
       "id": 14
     }
+  ],
+  "covid19info": [
+    {
+      "id": 1,
+      "date": "2020-01-22",
+      "confirmed": 2,
+      "active": 2,
+      "recovered": 0,
+      "deaths": 5
+    },
+    {
+      "id": 2,
+      "date": "2020-01-22",
+      "confirmed": 2,
+      "active": 2,
+      "recovered": 0,
+      "deaths": 5
+    },
+    {
+      "id": 3,
+      "date": "2020-01-22",
+      "confirmed": 2,
+      "active": 2,
+      "recovered": 0,
+      "deaths": 5
+    },
+    {
+      "id": 4,
+      "date": "2020-01-22",
+      "confirmed": 2,
+      "active": 2,
+      "recovered": 0,
+      "deaths": 5
+    },
+    {
+      "id": 5,
+      "date": "2020-01-22",
+      "confirmed": 2,
+      "active": 2,
+      "recovered": 0,
+      "deaths": 5
+    },
+    {
+      "id": 6,
+      "date": "2020-01-22",
+      "confirmed": 2,
+      "active": 2,
+      "recovered": 0,
+      "deaths": 5
+    }
   ]
 }
