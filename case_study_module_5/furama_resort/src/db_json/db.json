@@ -2,7 +2,6 @@
   "villas": [
     {
       "id": 1,
-      "pathImg": "/images/villa1.jpg",
       "name": "Santa Villa ",
       "usableArea": 5000,
       "rentalCost": 5000,
@@ -12,13 +11,16 @@
         "Month",
         "Year"
       ],
-      "roomStandard": "Vip",
+      "roomStandard": {
+        "id": 1,
+        "name": "Normal"
+      },
       "poolArea": 100,
-      "numberFloor": 5
+      "numberFloor": 5,
+      "pathImg": "/images/villa1.jpg"
     },
     {
       "id": 2,
-      "pathImg": "/images/villa2.jpg",
       "name": "Tấm Villa",
       "usableArea": 5000,
       "rentalCost": 5000,
@@ -28,13 +30,16 @@
         "Month",
         "Year"
       ],
-      "roomStandard": "Normal",
+      "roomStandard": {
+        "id": "2",
+        "name": "Medium"
+      },
       "poolArea": 100,
-      "numberFloor": 5
+      "numberFloor": 5,
+      "pathImg": "/images/villa2.jpg"
     },
     {
       "id": 3,
-      "pathImg": "/images/villa3.jpg",
       "name": "Soleil Villa",
       "usableArea": 5000,
       "rentalCost": 5000,
@@ -44,9 +49,13 @@
         "Month",
         "Year"
       ],
-      "roomStandard": "Medium",
+      "roomStandard": {
+        "id": 3,
+        "name": "Vip"
+      },
       "poolArea": 100,
-      "numberFloor": 5
+      "numberFloor": 5,
+      "pathImg": "/images/villa3.jpg"
     },
     {
       "id": 4,
@@ -60,13 +69,15 @@
         "Month",
         "Year"
       ],
-      "roomStandard": "Vip",
+      "roomStandard": {
+        "id": 1,
+        "name": "Normal"
+      },
       "poolArea": 100,
       "numberFloor": 5
     },
     {
       "id": 5,
-      "pathImg": "/images/villa5.jpg",
       "name": "Luxury Villa",
       "usableArea": 5000,
       "rentalCost": 5000,
@@ -76,9 +87,13 @@
         "Month",
         "Year"
       ],
-      "roomStandard": "Normal",
+      "roomStandard": {
+        "id": 3,
+        "name": "Vip"
+      },
       "poolArea": 100,
-      "numberFloor": 5
+      "numberFloor": 5,
+      "pathImg": "/images/villa3.jpg"
     },
     {
       "id": 6,
@@ -92,7 +107,10 @@
         "Month",
         "Year"
       ],
-      "roomStandard": "Vip",
+      "roomStandard": {
+        "id": 1,
+        "name": "Normal"
+      },
       "poolArea": 100,
       "numberFloor": 5
     }
@@ -100,7 +118,7 @@
   "houses": [
     {
       "id": 1,
-      "pathImg": "images/house1.jpg",
+      "pathImg": "/images/house1.jpg",
       "name": " Plumeria House",
       "usableArea": 5000,
       "rentalCost": 5000,
@@ -110,16 +128,17 @@
         "Month",
         "Year"
       ],
-      "roomStandard": "Vip",
+      "roomStandard": {
+        "id": 1,
+        "name": "Normal"
+      },
       "poolArea": 100,
       "numberFloor": 5,
       "description": "Good"
     },
     {
-      "id": 2,
-      "pathImg": "images/house2.jpg",
-      "name": " Field House",
-      "usableArea": 5000,
+      "name": "House White",
+      "usableArea": 50000,
       "rentalCost": 5000,
       "numberPeople": 50,
       "rentalType": [
@@ -127,14 +146,18 @@
         "Month",
         "Year"
       ],
-      "roomStandard": "Vip",
+      "roomStandard": {
+        "id": 2,
+        "name": "Medium"
+      },
       "poolArea": 100,
       "numberFloor": 5,
-      "description": "Good"
+      "pathImg": "/images/house3.jpg",
+      "id": 2
     },
     {
       "id": 3,
-      "pathImg": "images/house3.jpg",
+      "pathImg": "/images/house3.jpg",
       "name": " Black House",
       "usableArea": 5000,
       "rentalCost": 5000,
@@ -144,14 +167,17 @@
         "Month",
         "Year"
       ],
-      "roomStandard": "Vip",
+      "roomStandard": {
+        "id": 1,
+        "name": "Normal"
+      },
       "poolArea": 100,
       "numberFloor": 5,
       "description": "Good"
     },
     {
       "id": 4,
-      "pathImg": "images/house4.jpg",
+      "pathImg": "/images/house4.jpg",
       "name": " Beach House",
       "usableArea": 5000,
       "rentalCost": 5000,
@@ -161,14 +187,17 @@
         "Month",
         "Year"
       ],
-      "roomStandard": "Vip",
+      "roomStandard": {
+        "id": 1,
+        "name": "Normal"
+      },
       "poolArea": 100,
       "numberFloor": 5,
       "description": "Good"
     },
     {
       "id": 5,
-      "pathImg": "images/house5.jpg",
+      "pathImg": "/images/house5.jpg",
       "name": " Family House",
       "usableArea": 5000,
       "rentalCost": 5000,
@@ -178,15 +207,16 @@
         "Month",
         "Year"
       ],
-      "roomStandard": "Vip",
+      "roomStandard": {
+        "id": 1,
+        "name": "Normal"
+      },
       "poolArea": 100,
       "numberFloor": 5,
       "description": "Good"
     },
     {
-      "id": 6,
-      "pathImg": "images/house6.jpg",
-      "name": " White House",
+      "name": "White House",
       "usableArea": 5000,
       "rentalCost": 5000,
       "numberPeople": 50,
@@ -195,16 +225,20 @@
         "Month",
         "Year"
       ],
-      "roomStandard": "Vip",
+      "roomStandard": {
+        "id": 1,
+        "name": "Normal"
+      },
       "poolArea": 100,
       "numberFloor": 5,
-      "description": "Good"
+      "pathImg": "/images/house3.jpg",
+      "id": 6
     }
   ],
   "rooms": [
     {
       "id": 1,
-      "pathImg": "images/room1.jpg",
+      "pathImg": "/images/room1.jpg",
       "name": " Room Room",
       "usableArea": 5000,
       "rentalCost": 5000,
@@ -221,24 +255,22 @@
     },
     {
       "id": 2,
-      "pathImg": "images/room2.jpg",
-      "name": " LGBT Room",
+      "pathImg": "/images/room4.jpg",
+      "name": " Room ",
       "usableArea": 5000,
       "rentalCost": 5000,
       "rentalType": [
         "Hour",
-        "Day",
-        "Month"
+        "Day"
       ],
       "freeService": [
         "Thai Massage",
-        "SeaFood",
         "Car Loan"
       ]
     },
     {
       "id": 3,
-      "pathImg": "images/room3.jpg",
+      "pathImg": "/images/room3.jpg",
       "name": " Red Room",
       "usableArea": 5000,
       "rentalCost": 5000,
@@ -255,7 +287,7 @@
     },
     {
       "id": 4,
-      "pathImg": "images/room4.jpg",
+      "pathImg": "/images/room4.jpg",
       "name": " Violet Room",
       "usableArea": 5000,
       "rentalCost": 5000,
@@ -272,7 +304,7 @@
     },
     {
       "id": 5,
-      "pathImg": "images/room5.jpg",
+      "pathImg": "/images/room5.jpg",
       "name": " Pink Room",
       "usableArea": 5000,
       "rentalCost": 5000,
@@ -289,7 +321,7 @@
     },
     {
       "id": 6,
-      "pathImg": "images/room6.jpg",
+      "pathImg": "/images/room6.jpg",
       "name": " Double Room",
       "usableArea": 5000,
       "rentalCost": 5000,
@@ -311,8 +343,8 @@
       "contractCode": "CT-0001",
       "deposit": 5000,
       "totalPayment": 50000,
-      "startDate": "2023-10-14",
-      "endDate": "2023-10-21"
+      "startDate": "2025-05-14",
+      "endDate": "2025-10-21"
     },
     {
       "contractCode": "CT-0003",
@@ -347,12 +379,34 @@
       "id": 6
     },
     {
+      "id": 11,
       "contractCode": "CT-0099",
       "deposit": 500,
       "totalPayment": 5000,
-      "startDate": "2023-10-09",
-      "endDate": "2023-10-29",
-      "id": 11
+      "startDate": "2023-10-30",
+      "endDate": "2023-10-31"
+    },
+    {
+      "contractCode": "CT-0044",
+      "deposit": 500,
+      "totalPayment": 50000,
+      "startDate": "2044-11-18",
+      "endDate": "2045-11-19",
+      "id": 12
+    }
+  ],
+  "roomStandard": [
+    {
+      "id": 1,
+      "name": "Normal"
+    },
+    {
+      "id": 2,
+      "name": "Medium"
+    },
+    {
+      "id": 3,
+      "name": "Vip"
     }
   ]
 }

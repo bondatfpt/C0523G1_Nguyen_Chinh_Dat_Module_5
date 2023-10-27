@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getAll = async () => {
 try {
-    const response = await axios.get("http://localhost:3001/contracts");
+    const response = await axios.get("http://localhost:3001/contracts?_sort=startDate&_order=asc");
     return response.data;
 } catch (error) {
     console.log(error);
@@ -42,6 +42,16 @@ export const remove = async (id)=>{
         const response = await axios.delete("http://localhost:3001/contracts/"+id);
         console.log(response.status);
         return response.status;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const findContractByStartDate = async (startDate) => {
+    try {
+        const response = await axios.get("http://localhost:3001/contracts?startDate="+startDate)
+        console.log( response.data);
+        return response.data;
     } catch (error) {
         console.log(error);
     }
