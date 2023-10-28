@@ -20,7 +20,7 @@ export default function ModalConfirm({
 
   const handleRemove = async () => {
     const response = await remove(contractDelete.id);
-    if (response === 200) {
+    if (response == 200) {
       console.log("ContractDelete sau khi delete !" + contractDelete);
       navigate("/contracts");
       getAllContract();

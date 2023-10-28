@@ -5,13 +5,19 @@ import { Link } from "react-router-dom";
 import { getAll, findContractByStartDate } from "./service/ContractService";
 import ModalConfirm from "./ModalConfirm";
 import { toast } from "react-toastify";
+import Pagination from "./Pagination";
 
 export default function Contract() {
   const [contractList, setContractList] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [contractDelete, setContractDelete] = useState();
   const [startDate, setStartDate] = useState();
-  console.log(startDate);
+  const [pagination,setPagination] = useState({
+    _page:1,
+    _limit:2,
+    _totalRows:1,
+  })
+  console.log("Page init:" + pagination._page);
   const handleShowModal = (contract) => {
     setShowModal(true);
     setContractDelete(contract);
@@ -21,22 +27,40 @@ export default function Contract() {
   };
 
   useEffect(() => {
+
     const fetchDataStartDate = async () => {
-      const response = await findContractByStartDate(startDate);
+      const response = await findContractByStartDate(startDate,pagination);
       console.log(response);
       setContractList(response);
     };
     fetchDataStartDate();
   }, [startDate]);
   const fetchData = async () => {
-    const contracts = await getAll();
-    setContractList(contracts);
+    const respone = await getAll(pagination);
+    setPagination({
+      ...pagination,
+      _totalRows: respone.headers['x-total-count']
+    })
+    setContractList(respone.data);
   };
+  
   useEffect(() => {
+ 
+    
     fetchData();
-  }, []);
+    console.log("Page after call API:" + pagination._page);
+  }, [pagination._page]);
+  
+  const handleChangePage =  (newPage) =>{
+     setPagination({
+      ... pagination,
+      _page: newPage
+    })
+    console.log("New Page:" + newPage);
+    // console.log("Page seted:" + pagination._page);
+  }
 
-  if (!contractList ) {
+  if (!contractList  ) {
     return null;
   }
   return (
@@ -206,6 +230,7 @@ export default function Contract() {
                   })}
                 </tbody>
               </table>
+              <Pagination pagination = {pagination} onChangePage = {handleChangePage}/>
             </div>
           </div>
         </div>
