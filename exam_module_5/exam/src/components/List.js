@@ -1,18 +1,53 @@
 import React, { useEffect, useState } from "react";
 import { getAll } from "../service/ProductService";
+import Pagination from "./Pagination";
+import ModalConfirm from "./ModalConfirm";
+import { Link } from "react-router-dom";
 
 export default function List() {
   const [products, setProducts] = useState();
+  const [pagination, setPagination] = useState ({
+    _page:1,
+    _limit:3,
+    _totalRows:1,
+  })
+
+  const [productDelete, setProductDelete] = useState ();
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal =(product) => {
+    setShowModal(true);
+    setProductDelete(product);
+  }
+
+  const handleHideModal =(value) => {
+    console.log("Giá trị đã về: " +value);
+    setShowModal(value);
+  }
+
+
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getAll();
-      console.log(data);
-      setProducts(data);
+      const respone = await getAll(pagination);
+      console.log(respone.data);
+      setProducts(respone.data);
+      setPagination({
+        ... pagination,
+        _totalRows: respone.headers['x-total-count']
+      })
     };
     fetchData();
-  }, []);
+  }, [pagination._page,showModal]);
 
-  if (!products){
+  const handleChangePage = (newPage) => {
+    console.log("Giá trị page đã về:" + newPage);
+    setPagination({
+      ... pagination,
+      _page: newPage,
+    })
+  }
+
+  if (!products || !pagination){
     return null;
   }
 
@@ -21,12 +56,12 @@ export default function List() {
       <div className="body container shadow pb-1">
         <div style={{ display: "flex" }}>
           <div>
-            <a
+            <Link to="/new"
               style={{ padding: 10, fontSize: 17 }}
               className="btn btn-sm btn-primary mt-3 mb-3 rounded-0"
             >
               Create
-            </a>
+            </Link>
           </div>
           <div className="s003">
             <form>
@@ -108,7 +143,7 @@ export default function List() {
                     </button>
                     <button
                       className="btn btn-sm btn-outline-danger rounded-0"
-                      type="button"
+                      type="button" onClick={()=> handleShowModal(item)}
                     >
                       Delete
                     </button>
@@ -117,6 +152,8 @@ export default function List() {
               ))}
             </tbody>
           </table>
+          <Pagination pagination={pagination} onChangePage = {handleChangePage}/>
+          <ModalConfirm productDelete={productDelete} showModal= {showModal} handleHideModal = {handleHideModal}/>
         </div>
       </div>
     </>

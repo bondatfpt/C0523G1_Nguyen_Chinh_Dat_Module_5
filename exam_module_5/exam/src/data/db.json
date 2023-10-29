@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": 6,
       "productCode": "MHH-0001",
       "name": "Khoai",
       "unit": "kg",
@@ -13,62 +13,14 @@
       "harvestDate": "2023-12-09"
     },
     {
-      "id": 2,
-      "productCode": "MHH-0002",
-      "name": "Rau",
-      "unit": "Bó",
+      "id": 7,
+      "productCode": "MHH-0001",
+      "name": "Khoai",
+      "unit": "kg",
       "price": 10000,
       "type": {
         "id": 2,
         "name": "Củ"
-      },
-      "harvestDate": "2023-12-09"
-    },
-    {
-      "id": 3,
-      "productCode": "MHH-0003",
-      "name": "Rau muống",
-      "unit": "Bó",
-      "price": 10000,
-      "type": {
-        "id": 3,
-        "name": "Rau"
-      },
-      "harvestDate": "2023-12-09"
-    },
-    {
-      "id": 4,
-      "productCode": "MHH-0004",
-      "name": "Chanh",
-      "unit": "quả",
-      "price": 10000,
-      "type": {
-        "id": 1,
-        "name": "Quả"
-      },
-      "harvestDate": "2023-12-09"
-    },
-    {
-      "id": 5,
-      "productCode": "MHH-0005",
-      "name": "Rau dền",
-      "unit": "Bó",
-      "price": 10000,
-      "type": {
-        "id": 3,
-        "name": "Rau"
-      },
-      "harvestDate": "2023-12-09"
-    },
-    {
-      "id": 6,
-      "productCode": "MHH-0006",
-      "name": "Cà chua",
-      "unit": "kg",
-      "price": 10000000,
-      "type": {
-        "id": 1,
-        "name": "Quả"
       },
       "harvestDate": "2023-12-09"
     }
