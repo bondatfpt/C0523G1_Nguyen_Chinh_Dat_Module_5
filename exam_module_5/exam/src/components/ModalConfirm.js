@@ -18,13 +18,17 @@ export default function ModalConfirm({showModal, handleHideModal, productDelete}
             console.log("Giá trị truyền về: " +value);
         }
     }
+
+    if (!productDelete){
+        return null;
+    }
   return (
     <div>
         <Modal show={showModal}>
         <Modal.Header>
             <Modal.Title>Delete Confirm</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure to delete this product have name: </Modal.Body>
+        <Modal.Body>Are you sure to delete this product have name: {productDelete.name} </Modal.Body>
         <Modal.Footer>
             <Button variant='primary'onClick={()=>handleModal(false)} >Close</Button>
             <Button variant='danger' onClick={handleDelete}>Delete</Button>
