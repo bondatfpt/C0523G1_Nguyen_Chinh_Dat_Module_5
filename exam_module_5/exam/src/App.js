@@ -10,7 +10,7 @@ function App() {
     <div >
       <Routes>
      <Route path='/' element={<List></List>}></Route>
-     <Route path='/new' element={<Create></Create>}></Route>
+     {/* <Route path='/new' element={<Create></Create>}></Route> */}
       </Routes>
       <ToastContainer></ToastContainer>
     </div>

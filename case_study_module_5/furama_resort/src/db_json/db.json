@@ -304,7 +304,7 @@
     },
     {
       "id": 5,
-      "pathImg": "/images/room5.jpg",
+      "pathImg": "/images/room4.jpg",
       "name": " Pink Room",
       "usableArea": 5000,
       "rentalCost": 5000,
@@ -371,12 +371,12 @@
       "id": 4
     },
     {
-      "contractCode": "CT-0005",
+      "id": 6,
+      "contractCode": "CT-0008",
       "deposit": 5000,
       "totalPayment": 50000,
       "startDate": "2023-10-11",
-      "endDate": "2023-10-29",
-      "id": 6
+      "endDate": "2023-10-29"
     },
     {
       "id": 11,
@@ -393,6 +393,14 @@
       "startDate": "2044-11-18",
       "endDate": "2045-11-19",
       "id": 12
+    },
+    {
+      "contractCode": "CT-0006",
+      "deposit": 500,
+      "totalPayment": 5000,
+      "startDate": "2000-02-05",
+      "endDate": "2009-06-02",
+      "id": 13
     }
   ],
   "roomStandard": [

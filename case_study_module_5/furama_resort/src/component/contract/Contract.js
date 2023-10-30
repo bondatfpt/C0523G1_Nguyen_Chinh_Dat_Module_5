@@ -60,7 +60,7 @@ export default function Contract() {
     // console.log("Page seted:" + pagination._page);
   }
 
-  if (!contractList  ) {
+  if (!contractList) {
     return null;
   }
   return (

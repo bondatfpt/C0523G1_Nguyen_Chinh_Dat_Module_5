@@ -1,40 +1,29 @@
-import React, { useEffect } from 'react'
-import {Modal, Button} from "react-bootstrap";
-import { remove,getAll} from '../service/ProductService';
-import {toast} from "react-toastify";
-import {useNavigate} from "react-router-dom";
-
-export default function ModalConfirm({showModal, handleHideModal, productDelete}) {
-    const navigate = useNavigate();
-    const handleDelete = () => {
-        const respone = remove(productDelete.id);
-        handleModal (false);
-         toast.success("Success Deleted");
-    }
- 
-    const handleModal = (value) => {
-        if (handleHideModal){
-            handleHideModal(value);
-            console.log("Giá trị truyền về: " +value);
-        }
-    }
-
-    if (!productDelete){
-        return null;
-    }
+import React from "react";
+import { Modal, Button } from "react-bootstrap";
+import { remove } from "../service/ProductService";
+export default function ModalConfirm({
+  productDelete,
+  handleHideModal,
+  showModal,
+}) {
+  const handleDelete = async () => {
+    const respone = await remove(productDelete.id); 
+    handleHideModal();
+  };
   return (
     <div>
-        <Modal show={showModal}>
+      <Modal show={showModal}>
         <Modal.Header>
-            <Modal.Title>Delete Confirm</Modal.Title>
+          <Modal.Title>Delete Confirm</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure to delete this product have name: {productDelete.name} </Modal.Body>
+        <Modal.Body>Are you sure to delete this product ?</Modal.Body>
         <Modal.Footer>
-            <Button variant='primary'onClick={()=>handleModal(false)} >Close</Button>
-            <Button variant='danger' onClick={handleDelete}>Delete</Button>
+          <Button variant="primary" onClick={handleHideModal}>
+            CLose
+          </Button>
+          <Button variant="danger" onClick={handleDelete}>Delete</Button>
         </Modal.Footer>
-        </Modal>
-
+      </Modal>
     </div>
-  )
+  );
 }

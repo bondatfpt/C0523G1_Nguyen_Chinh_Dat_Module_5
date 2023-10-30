@@ -19,11 +19,6 @@ export default function ContractUpdate() {
   useEffect(() => {
     fetchData();
   }, []);
-
-  if (!contractUpdate) {
-    return null;
-  }
-
   const handleCheckContractCode = async (contractCode, id) => {
     const contractList = await getAll();
     const contract = contractList.find(
@@ -36,10 +31,8 @@ export default function ContractUpdate() {
     }
   };
   const handleSubmit = async (values, id) => {
-    const checkContractCode = await handleCheckContractCode(
-      values.contractCode, values.id
-    );
-    if (checkContractCode) {
+  
+    
       const response = await update(values, id);
       if (response == 200) {
         toast.success("Success Updated");
@@ -47,10 +40,12 @@ export default function ContractUpdate() {
       } else {
         toast.warn("Something wrong here !");
       }
-    } else {
-      toast.warn("Duplicate contract code !");
-    }
+    
   };
+
+  if (!contractUpdate) {
+    return null;
+  }
 
   const initValue = {
     id: contractUpdate.id,

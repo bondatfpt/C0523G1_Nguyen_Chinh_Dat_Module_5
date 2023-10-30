@@ -21,10 +21,6 @@ export default function ContractCreate() {
     }
   };
   const handleSubmit = async (values) => {
-    const checkContractCode = await handleCheckContractCode(
-      values.contractCode
-    );
-    if (checkContractCode) {
       const response = await create(values);
       if (response == 201) {
         toast.success("Success Created");
@@ -33,10 +29,7 @@ export default function ContractCreate() {
         navigate("/contracts/new");
         toast.warn("Something wrong here !");
       }
-    } else {
-      navigate("/contracts/new");
-      toast.warn("Duplicate contract code !");
-    }
+   
   };
 
   const initValue = {
